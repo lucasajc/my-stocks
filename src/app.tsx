@@ -1,5 +1,13 @@
 import React from 'react'
+import { Provider } from 'react-redux'
+import { store } from './store'
 
-export default function App() {
-  return <h1>My Stocks</h1>
+const App = () => {
+  return (
+    <Provider store={store}>
+      <h1>My Stocks</h1>
+    </Provider>
+  )
 }
+
+export default App
