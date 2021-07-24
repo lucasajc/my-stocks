@@ -8,7 +8,7 @@ export const main = {
   input: {
     primary: {
       default: {
-        backgroundColor: '#ffffff',
+        backgroundColor: 'transparent',
         borderColor: colors.primary,
       },
     },
@@ -34,7 +34,7 @@ export const main = {
     },
     secondary: {
       default: {
-        backgroundColor: '#ffffff',
+        backgroundColor: 'transparent',
         textColor: '#000000',
         borderColor: colors.primary,
       },
