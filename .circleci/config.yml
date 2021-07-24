@@ -31,8 +31,8 @@ jobs:
       - image: circleci/node:10
     steps:
       - netlify-deploy:
-        name: Netlify Deploy
-        command: ./node_modules/.bin/netlify deploy --site ${NETLIFY_SITE_API_ID} --auth ${NETLIFY_ACCESS_TOKEN} --dir=dist
+          name: Netlify Deploy
+          command: ./node_modules/.bin/netlify deploy --site ${NETLIFY_SITE_API_ID} --auth ${NETLIFY_ACCESS_TOKEN} --dir=dist
 
 workflows:
   version: 2
