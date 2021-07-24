@@ -39,6 +39,9 @@
     "object-curly-newline": "off",
     "no-param-reassign": "off",
     "implicit-arrow-linebreak": "off",
-    "indent": "off"
+    "indent": "off",
+    "comma-dangle": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error"
   }
 }

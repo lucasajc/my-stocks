@@ -1,10 +1,24 @@
 const colors = {
   primary: '#ff3c64',
-  secondary: '#ffffff',
+  secondary: '#f4f2f2',
 }
 
 export const main = {
   ...colors,
+  input: {
+    primary: {
+      default: {
+        backgroundColor: '#ffffff',
+        borderColor: colors.primary,
+      },
+    },
+    secondary: {
+      default: {
+        backgroundColor: colors.secondary,
+        borderColor: colors.secondary,
+      },
+    },
+  },
   button: {
     primary: {
       default: {
