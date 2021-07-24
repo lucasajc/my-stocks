@@ -5,7 +5,7 @@ import { store } from './store'
 const App = () => {
   return (
     <Provider store={store}>
-      <h1>My Stocks</h1>
+      <h1>My Stocks Web App</h1>
     </Provider>
   )
 }

@@ -6,6 +6,6 @@ describe('App component', () => {
   it('render My Stocks label', () => {
     render(<App />)
 
-    expect(screen.getByText('My Stocks')).toBeInTheDocument()
+    expect(screen.getByText('My Stocks Web App')).toBeInTheDocument()
   })
 })
