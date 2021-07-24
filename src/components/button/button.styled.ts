@@ -18,7 +18,8 @@ export const Button = styled.button<ButtonProps>`
   background-color: ${(props) =>
     props.theme.button[props.variant].default.backgroundColor};
   color: ${(props) => props.theme.button[props.variant].default.textColor};
-  ${(props) => props.theme.button[props.variant].default.borderColor};
+  border-color: ${(props) =>
+    props.theme.button[props.variant].default.borderColor};
   &:hover {
     background-color: ${(props) =>
       props.theme.button[props.variant].hover.backgroundColor};

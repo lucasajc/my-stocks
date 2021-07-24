@@ -6,15 +6,20 @@ interface IProps extends HTMLProps<HTMLButtonElement> {
   length?: 'sm' | 'lg'
 }
 
-export const Button = (props: PropsWithChildren<IProps>) => {
+export const Button = ({
+  variant,
+  length,
+  onClick,
+  children,
+}: PropsWithChildren<IProps>) => {
   return (
     <ButtonStyled
       type="button"
-      variant={props.variant}
-      length={props.length}
-      onClick={props.onClick}
+      variant={variant}
+      length={length}
+      onClick={onClick}
     >
-      {props.children}
+      {children}
     </ButtonStyled>
   )
 }
