@@ -5,6 +5,9 @@ const colors = {
 
 export const main = {
   ...colors,
+  body: {
+    backgroundColor: '#e6f0ea',
+  },
   input: {
     primary: {
       default: {
