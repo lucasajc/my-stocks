@@ -26,9 +26,21 @@ jobs:
       - run:
           name: Run build
           command: npm run build
+  deploy:
+    docker:
+      - image: circleci/node:10
+    steps:
+      - netlify-deploy:
+        name: Netlify Deploy
+        command: ./node_modules/.bin/netlify deploy --site ${NETLIFY_SITE_API_ID} --auth ${NETLIFY_ACCESS_TOKEN} --dir=dist
 
 workflows:
   version: 2
-  Build and Test:
+  test-build--deploy:
     jobs:
       - build
+      - deploy:
+          filters:
+            branches:
+              only:
+                - circleci-project-setup
