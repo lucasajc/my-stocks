@@ -13,8 +13,8 @@ export const Button = styled.button<ButtonProps>`
   font-size: 14px;
   font-weight: 600;
   line-height: 24px;
+  transition: background-color 0.1s ease-in, border-color 0.1s ease-in;
   padding: ${(props) => (props.length === 'sm' ? '12px' : '12px 32px')};
-  transition: background-color 0.1s ease-in;
   background-color: ${(props) =>
     props.theme.button[props.variant].default.backgroundColor};
   color: ${(props) => props.theme.button[props.variant].default.textColor};
