@@ -1,8 +1,10 @@
-version: 2
-jobs:
-  build:
+version: 2.1
+executors:
+  node-executor:
     docker:
       - image: circleci/node:10
+commands:
+  test_build:
     steps:
       - checkout
       - restore_cache:
@@ -21,27 +23,23 @@ jobs:
       - run:
           name: Run tests
           command: npm test
-      - store_artifacts:
-          path: test-results
       - run:
           name: Run build
           command: npm run build
-  deploy:
-    docker:
-      - image: circleci/node:10
+jobs:
+  build_deploy:
+    executor: node-executor
+    working_directory: ~/repo
     steps:
+      - test_build
       - run:
           name: Netlify Deploy
           command: ./node_modules/.bin/netlify deploy --site ${NETLIFY_SITE_API_ID} --auth ${NETLIFY_ACCESS_TOKEN} --dir=dist
-
 workflows:
   version: 2
-  test-build--deploy:
+  test-build-deploy:
     jobs:
-      - build
-      - deploy:
-          requires:
-            - build
+      - build_deploy:
           filters:
             branches:
               only:
