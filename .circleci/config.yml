@@ -7,6 +7,9 @@ commands:
   test_build:
     steps:
       - checkout
+      - run:
+          name: Set environment variables
+          command: echo "${PRODUCTION_ENV}" >>  env/production.json
       - restore_cache:
           keys:
             - cache-v1-{{ checksum "package-lock.json" }}
@@ -25,7 +28,7 @@ commands:
           command: npm test
       - run:
           name: Run build
-          command: API_TOKEN=${API_TOKEN} npm run build
+          command: npm run build
 jobs:
   build_deploy:
     executor: node-executor
