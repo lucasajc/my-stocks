@@ -1,4 +1,4 @@
-import Service from './service'
+import ApiService from './api.service'
 
 describe('Service class', () => {
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe('Service class', () => {
       )
     )
 
-    const response = await new Service().get('/some/endpoint/v1/company', {
+    const response = await new ApiService().get('/some/endpoint/v1/company', {
       search: 'some-company-name',
       page: '5',
     })
@@ -41,7 +41,7 @@ describe('Service class', () => {
       .fn()
       .mockResolvedValue(new Response('Unknown symbol', { status: 404 }))
 
-    const response = await new Service().get('/some/endpoint/v1/company')
+    const response = await new ApiService().get('/some/endpoint/v1/company')
 
     expect(response.status).toBe(404)
     expect(response.error).toBe(true)
