@@ -15,7 +15,7 @@ export const Button = ({
   return (
     <ButtonStyled
       type="button"
-      variant={variant}
+      variant={variant || 'primary'}
       length={length}
       onClick={onClick}
     >
