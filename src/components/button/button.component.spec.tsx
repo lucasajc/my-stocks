@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { TestWrapper } from '../../common/test-wrapper'
+import { TestWrapper } from 'common/test-wrapper'
 import { Button } from './button.component'
 
 describe('Button component', () => {

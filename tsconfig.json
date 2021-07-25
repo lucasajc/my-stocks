@@ -7,6 +7,14 @@
     "jsx": "react",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "store/*": ["src/store/*"],
+      "components/*": ["src/components/*"],
+      "common/*": ["src/common/*"],
+      "app/*": ["src/app/*"],
+      "client-api/*": ["src/client-api/*"]
+    }
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
-import { store } from '../store'
+import { store } from 'store/index'
 import { main } from './themes/main.theme'
 import { AppContainer } from './app.styled'
 import './app.css'
