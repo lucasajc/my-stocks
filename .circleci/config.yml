@@ -25,9 +25,7 @@ commands:
           command: npm test
       - run:
           name: Run build
-          environment:
-            API_TOKEN: ${API_TOKEN}
-          command: npm run build
+          command: API_TOKEN=${API_TOKEN} npm run build
 jobs:
   build_deploy:
     executor: node-executor
