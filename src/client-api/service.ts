@@ -1,13 +1,23 @@
-abstract class Service {
-  public static get(endpoint: string, params?: Record<string, string>) {
+import { ApiCallResponse } from './service.interfaces'
+
+class Service {
+  public get(
+    endpoint: string,
+    params?: Record<string, string>
+  ): Promise<ApiCallResponse<any>> {
     return fetch(this.buildUrl(endpoint, params).href, { method: 'GET' }).then(
-      (response) => {
-        return response
+      async (response) => {
+        const data = response.ok ? await response.json() : null
+        return {
+          status: response.status,
+          error: !response.ok,
+          data,
+        }
       }
     )
   }
 
-  private static buildUrl(endpoint: string, params: Record<string, string>) {
+  private buildUrl(endpoint: string, params: Record<string, string>) {
     return new URL(
       `${process.env.API_URL}${endpoint}?token=${
         process.env.API_TOKEN
@@ -15,7 +25,7 @@ abstract class Service {
     )
   }
 
-  private static getQueryParameters(params?: Record<string, string>) {
+  private getQueryParameters(params?: Record<string, string>) {
     return params
       ? Object.entries(params)
           .map(([key, value]) => `&${key}=${value}`)

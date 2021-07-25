@@ -1,11 +1,14 @@
 import Service from './service'
 
 describe('Service class', () => {
-  it('makes a get request using fetch', async () => {
+  beforeEach(() => {
     process.env = {
       ...process.env,
       ...{ API_URL: 'https://some-api-url.com', API_TOKEN: 'some-api-token' },
     }
+  })
+
+  it('makes a get request using fetch', async () => {
     global.fetch = jest.fn().mockResolvedValue(
       new Response(
         JSON.stringify({
@@ -16,7 +19,7 @@ describe('Service class', () => {
       )
     )
 
-    const response = await Service.get('/some/endpoint/v1/company', {
+    const response = await new Service().get('/some/endpoint/v1/company', {
       search: 'some-company-name',
       page: '5',
     })
@@ -26,9 +29,22 @@ describe('Service class', () => {
       { method: 'GET' }
     )
     expect(response.status).toBe(200)
-    expect(await response.json()).toEqual({
+    expect(response.error).toBe(false)
+    expect(response.data).toEqual({
       symbol: 'SOME-SYMBOL',
       name: 'some company name',
     })
+  })
+
+  it('returns error and status code when a request does not returns ok', async () => {
+    global.fetch = jest
+      .fn()
+      .mockResolvedValue(new Response('Unknown symbol', { status: 404 }))
+
+    const response = await new Service().get('/some/endpoint/v1/company')
+
+    expect(response.status).toBe(404)
+    expect(response.error).toBe(true)
+    expect(response.data).toBeFalsy()
   })
 })
