@@ -14,4 +14,5 @@ module.exports = {
     '<rootDir>/config/jest/jest-setup.ts'
   ],
   coverageDirectory: '<rootDir>/config/jest/coverage',
+  moduleDirectories: ['node_modules', 'src']
 }
