@@ -1,5 +1,5 @@
 export interface ApiCallResponse<T> {
-  status: number
-  error: boolean
+  status?: number
+  error?: string
   data?: T
 }

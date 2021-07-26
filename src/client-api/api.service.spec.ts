@@ -29,7 +29,7 @@ describe('Service class', () => {
       { method: 'GET' }
     )
     expect(response.status).toBe(200)
-    expect(response.error).toBe(false)
+    expect(response.error).toBeFalsy()
     expect(response.data).toEqual({
       symbol: 'SOME-SYMBOL',
       name: 'some company name',
@@ -44,7 +44,31 @@ describe('Service class', () => {
     const response = await new ApiService().get('/some/endpoint/v1/company')
 
     expect(response.status).toBe(404)
-    expect(response.error).toBe(true)
+    expect(response.error).toEqual('Unknown symbol')
+    expect(response.data).toBeFalsy()
+  })
+
+  it('returns error message when an error has been thrown during the request', async () => {
+    global.fetch = jest.fn().mockImplementation(() => {
+      throw new Error('something happened')
+    })
+
+    const response = await new ApiService().get('/some/endpoint/v1/company')
+
+    expect(response.error).toEqual('something happened')
+    expect(response.status).toBeFalsy()
+    expect(response.data).toBeFalsy()
+  })
+
+  it('returns error message when an error has been thrown when body parse fails', async () => {
+    global.fetch = jest
+      .fn()
+      .mockResolvedValue(new Response('not a json body', { status: 200 }))
+
+    const response = await new ApiService().get('/some/endpoint/v1/company')
+
+    expect(response.error).toContain('Unexpected token')
+    expect(response.status).toBeFalsy()
     expect(response.data).toBeFalsy()
   })
 })

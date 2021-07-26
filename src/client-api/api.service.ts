@@ -16,16 +16,31 @@ class ApiService {
     endpoint: string,
     params?: Record<string, string>
   ): Promise<ApiCallResponse<any>> {
-    return fetch(buildUrl(endpoint, params).href, { method: 'GET' }).then(
-      async (response) => {
-        const data = response.ok ? await response.json() : null
-        return {
-          status: response.status,
-          error: !response.ok,
-          data,
-        }
-      }
-    )
+    try {
+      return fetch(buildUrl(endpoint, params).href, { method: 'GET' })
+        .then(this.handleResponse)
+        .catch((error: Error) => {
+          return this.handleError(error)
+        })
+    } catch (error) {
+      return Promise.resolve(this.handleError(error))
+    }
+  }
+
+  private async handleResponse(
+    response: Response
+  ): Promise<ApiCallResponse<any>> {
+    const data = response.ok ? await response.json() : null
+    const error = !response.ok ? await response.text() : null
+    return {
+      status: response.status,
+      error,
+      data,
+    }
+  }
+
+  private handleError(error: Error) {
+    return { error: error.message }
   }
 }
 
