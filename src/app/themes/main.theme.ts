@@ -8,6 +8,31 @@ export const main = {
   body: {
     backgroundColor: '#e6f0ea',
   },
+  card: {
+    backgroundColor: '#ffffff',
+  },
+  text: {
+    font: 'Helvetica, sans-serif',
+    sizes: {
+      sm: '12px',
+      md: '14px',
+      lg: '18px',
+      xlg: '24px',
+      xxlg: '32px',
+    },
+    weights: {
+      light: '300',
+      normal: '400',
+      bold: '600',
+    },
+    colors: {
+      numbers: {
+        positive: '#00873c',
+        negative: '#eb0f29',
+        zero: '#000000',
+      },
+    },
+  },
   input: {
     primary: {
       default: {
