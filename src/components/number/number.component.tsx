@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react'
+import { TextProps } from 'components/text/text.styled'
 import { NumberStyled } from './number.styled'
 
-interface IProps {
+interface IProps extends TextProps {
   value?: number
   percentage?: boolean
 }
@@ -12,7 +13,12 @@ const signMap = {
   zero: '',
 }
 
-export const Number = ({ value = 0, percentage = false }: IProps) => {
+export const Number = ({
+  value = 0,
+  percentage = false,
+  size = 'md',
+  weight = 'normal',
+}: IProps) => {
   const sign = useMemo(() => {
     let signName = 'zero'
     if (value > 0) signName = 'positive'
@@ -23,7 +29,7 @@ export const Number = ({ value = 0, percentage = false }: IProps) => {
   const percentageSign = percentage ? '%' : ''
 
   return (
-    <NumberStyled sign={sign}>
+    <NumberStyled sign={sign} size={size} weight={weight}>
       {`${signMap[sign]}${formattedValue}${percentageSign}`}
     </NumberStyled>
   )
