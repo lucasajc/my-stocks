@@ -6,6 +6,7 @@ interface IProps extends TextProps {
   value?: number
   percentage?: boolean
   showPositiveSign?: boolean
+  withColors?: boolean
 }
 
 const signMap = {
@@ -20,6 +21,7 @@ export const Number = ({
   size = 'md',
   weight = 'normal',
   showPositiveSign = false,
+  withColors = false,
 }: IProps) => {
   const sign = useMemo(() => {
     let signName = 'zero'
@@ -31,7 +33,12 @@ export const Number = ({
   const percentageSign = percentage ? '%' : ''
 
   return (
-    <NumberStyled sign={sign} size={size} weight={weight}>
+    <NumberStyled
+      sign={sign}
+      size={size}
+      weight={weight}
+      withColors={withColors}
+    >
       {`${
         showPositiveSign ? signMap[sign] : ''
       }${formattedValue}${percentageSign}`}

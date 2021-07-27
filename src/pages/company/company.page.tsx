@@ -65,11 +65,12 @@ function CompanyPage() {
                 </CardHeader>
                 <Price>{quote.latestPrice.toFixed(2)}</Price>
                 <PriceDetails>
-                  <Number value={quote.change} showPositiveSign />
+                  <Number value={quote.change} showPositiveSign withColors />
                   <Number
                     value={quote.changePercent}
                     percentage
                     showPositiveSign
+                    withColors
                   />
                 </PriceDetails>
               </div>
@@ -80,9 +81,7 @@ function CompanyPage() {
                   </Text>
                 </CardQuoteSummaryGridCell>
                 <CardQuoteSummaryGridCell>
-                  <Text size="sm" weight="normal">
-                    {quote.high}
-                  </Text>
+                  <Number value={quote.high} size="sm" weight="normal" />
                 </CardQuoteSummaryGridCell>
                 <CardQuoteSummaryGridCell>
                   <Text size="sm" weight="light">
@@ -90,9 +89,7 @@ function CompanyPage() {
                   </Text>
                 </CardQuoteSummaryGridCell>
                 <CardQuoteSummaryGridCell>
-                  <Text size="sm" weight="normal">
-                    {quote.low}
-                  </Text>
+                  <Number value={quote.low} size="sm" weight="normal" />
                 </CardQuoteSummaryGridCell>
               </CardQuoteSummaryGrid>
             </CardQuoteSummary>

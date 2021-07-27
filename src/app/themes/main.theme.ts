@@ -26,6 +26,9 @@ export const main = {
       bold: '600',
     },
     colors: {
+      labels: {
+        default: '#000000',
+      },
       numbers: {
         positive: '#00873c',
         negative: '#eb0f29',
