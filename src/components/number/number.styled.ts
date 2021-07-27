@@ -9,6 +9,7 @@ interface NumberProps extends TextProps {
 export const NumberStyled = styled(TextStyled)<NumberProps>`
   font-size: 14px;
   display: inline-block;
+  font-size: ${(props) => props.theme.text.sizes[props.size]};
   color: ${(props) =>
     props.withColors
       ? props.theme.text.colors.numbers[props.sign]

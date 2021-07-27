@@ -5,18 +5,22 @@ import { CardVolume } from 'pages/company/card-volume/card-volume.component'
 
 describe('Card volume component', () => {
   it('shows the latest volume by default', () => {
-    render(<CardVolume latestVolume={421354558} previousVolume={73769270} />, {
-      wrapper: TestWrapper,
-    })
+    render(
+      <CardVolume latestVolume={1} previousVolume={2} avgTotalVolume={3} />,
+      {
+        wrapper: TestWrapper,
+      }
+    )
 
-    expect(screen.getByText(421354558)).toBeInTheDocument()
+    expect(screen.getByText('1')).toBeInTheDocument()
+    expect(screen.getByText('3')).toBeInTheDocument()
   })
 
   it('shows the previous volume whe latest volume is no available', () => {
-    render(<CardVolume previousVolume={73769270} />, {
+    render(<CardVolume previousVolume={73769270} avgTotalVolume={1} />, {
       wrapper: TestWrapper,
     })
 
-    expect(screen.getByText(73769270)).toBeInTheDocument()
+    expect(screen.getByText('73769270')).toBeInTheDocument()
   })
 })
