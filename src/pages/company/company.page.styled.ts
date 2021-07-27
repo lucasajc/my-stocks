@@ -2,6 +2,8 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   padding: 16px;
+  max-width: 1056px;
+  margin: auto;
 `
 
 export const Header = styled.div`
@@ -19,6 +21,7 @@ export const CardContainer = styled.div`
 
   @media only screen and (min-width: 480px) {
     display: flex;
+    flex-wrap: wrap;
     > * {
       margin-right: 16px;
     }

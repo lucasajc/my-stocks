@@ -4,14 +4,10 @@ import { CompanyService } from 'client-api/company'
 import Company from 'client-api/company/company.model'
 import { Quote, QuoteService } from 'client-api/quote'
 import { Text } from 'components/text/text.component'
-import {
-  CardContainer,
-  Container,
-  Header,
-  Title,
-} from 'pages/company/company.page.styled'
-import { CardLatestPrice } from 'pages/company/card-latest-price/card-latest-price.component'
-import { CardVolume } from 'pages/company/card-volume/card-volume.component'
+import { CardContainer, Container, Header, Title } from './company.page.styled'
+import { CardLatestPrice } from './card-latest-price/card-latest-price.component'
+import { CardVolume } from './card-volume/card-volume.component'
+import { CardQuoteSummary } from './card-quote-summary/card-quote-summary.component'
 
 function CompanyPage() {
   const { symbol } = useParams<{ symbol: string }>()
@@ -56,10 +52,23 @@ function CompanyPage() {
               high={quote.high}
               low={quote.low}
               latestPrice={quote.latestPrice}
+              iexOpen={quote.iexOpen}
+              iexClose={quote.iexClose}
             />
             <CardVolume
               previousVolume={quote.previousVolume}
               latestVolume={quote.latestVolume}
+              avgTotalVolume={quote.avgTotalVolume}
+            />
+            <CardQuoteSummary
+              iexAskPrice={quote.iexAskPrice}
+              iexAskSize={quote.iexAskSize}
+              iexBidPrice={quote.iexBidPrice}
+              iexBidSize={quote.iexBidSize}
+              marketCap={quote.marketCap}
+              peRatio={quote.peRatio}
+              week52High={quote.week52High}
+              week52Low={quote.week52Low}
             />
           </CardContainer>
         </>
