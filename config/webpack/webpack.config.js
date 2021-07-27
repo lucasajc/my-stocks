@@ -25,6 +25,7 @@ module.exports = {
       app: path.resolve(__dirname, '../../src/app'),
       common: path.resolve(__dirname, '../../src/common'),
       components: path.resolve(__dirname, '../../src/components'),
+      pages: path.resolve(__dirname, '../../src/pages'),
       store: path.resolve(__dirname, '../../src/store'),
       'client-api': path.resolve(__dirname, '../../src/client-api')
     }

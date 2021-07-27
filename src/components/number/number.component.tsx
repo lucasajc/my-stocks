@@ -25,7 +25,7 @@ export const Number = ({
     else if (value < 0) signName = 'negative'
     return signName as 'positive' | 'negative' | 'zero'
   }, [value])
-  const formattedValue = value.toFixed(2)
+  const formattedValue = value ? value.toFixed(2) : '0.00'
   const percentageSign = percentage ? '%' : ''
 
   return (

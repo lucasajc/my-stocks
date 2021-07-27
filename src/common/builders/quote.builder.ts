@@ -130,6 +130,16 @@ class QuoteBuilder implements Quote {
     return this
   }
 
+  withLatestVolume(latestVolume: number) {
+    this.latestVolume = latestVolume
+    return this
+  }
+
+  withPreviousVolume(previousVolume: number) {
+    this.previousVolume = previousVolume
+    return this
+  }
+
   build() {
     return this
   }

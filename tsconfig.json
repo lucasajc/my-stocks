@@ -2,8 +2,8 @@
   "compilerOptions": {
     "outDir": "./dist/",
     "noImplicitAny": true,
-    "module": "es6",
-    "target": "es5",
+    "module": "esnext",
+    "target": "esnext",
     "jsx": "react",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
@@ -12,6 +12,7 @@
     "paths": {
       "store/*": ["src/store/*"],
       "components/*": ["src/components/*"],
+      "pages/*": ["src/pages/*"],
       "common/*": ["src/common/*"],
       "app/*": ["src/app/*"],
       "client-api/*": ["src/client-api/*"]
