@@ -17,7 +17,7 @@ class Quote {
   lowSource: string
   latestPrice: number
   latestSource: string
-  latestTime: number
+  latestTime: string
   latestUpdate: number
   latestVolume?: number
   iexRealtimePrice: number
