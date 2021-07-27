@@ -6,10 +6,15 @@ import {
   CardPrimaryContent,
 } from 'components/card/card.component'
 import { Text } from 'components/text/text.component'
+import { CardFooterStyled as CardFooter } from 'pages/company/card-volume/card-volume.styled'
 
-type Props = Pick<Quote, 'latestVolume' | 'previousVolume'>
+type Props = Pick<Quote, 'latestVolume' | 'previousVolume' | 'avgTotalVolume'>
 
-export const CardVolume = ({ latestVolume, previousVolume }: Props) => {
+export const CardVolume = ({
+  latestVolume,
+  previousVolume,
+  avgTotalVolume,
+}: Props) => {
   return (
     <Card>
       <CardHeader>
@@ -18,6 +23,14 @@ export const CardVolume = ({ latestVolume, previousVolume }: Props) => {
         </Text>
       </CardHeader>
       <CardPrimaryContent>{latestVolume || previousVolume}</CardPrimaryContent>
+      <CardFooter>
+        <Text size="sm" weight="light">
+          Average total volume:
+        </Text>
+        <Text size="sm" weight="normal">
+          {avgTotalVolume}
+        </Text>
+      </CardFooter>
     </Card>
   )
 }
