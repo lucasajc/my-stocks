@@ -29,6 +29,9 @@ commands:
       - run:
           name: Run build
           command: npm run build
+      - run:
+          name: Add support for client-side routing in Netlify
+          command: echo "/*  /index.html  200" >> dist/_redirects
 jobs:
   build_deploy:
     executor: node-executor
