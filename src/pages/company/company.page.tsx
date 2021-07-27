@@ -65,8 +65,12 @@ function CompanyPage() {
                 </CardHeader>
                 <Price>{quote.latestPrice.toFixed(2)}</Price>
                 <PriceDetails>
-                  <Number value={quote.change} />
-                  <Number value={quote.changePercent} percentage />
+                  <Number value={quote.change} showPositiveSign />
+                  <Number
+                    value={quote.changePercent}
+                    percentage
+                    showPositiveSign
+                  />
                 </PriceDetails>
               </div>
               <CardQuoteSummaryGrid>

@@ -5,6 +5,7 @@ import { NumberStyled } from './number.styled'
 interface IProps extends TextProps {
   value?: number
   percentage?: boolean
+  showPositiveSign?: boolean
 }
 
 const signMap = {
@@ -18,6 +19,7 @@ export const Number = ({
   percentage = false,
   size = 'md',
   weight = 'normal',
+  showPositiveSign = false,
 }: IProps) => {
   const sign = useMemo(() => {
     let signName = 'zero'
@@ -30,7 +32,9 @@ export const Number = ({
 
   return (
     <NumberStyled sign={sign} size={size} weight={weight}>
-      {`${signMap[sign]}${formattedValue}${percentageSign}`}
+      {`${
+        showPositiveSign ? signMap[sign] : ''
+      }${formattedValue}${percentageSign}`}
     </NumberStyled>
   )
 }

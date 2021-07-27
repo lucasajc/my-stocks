@@ -22,10 +22,18 @@ describe('Number component', () => {
     expect(screen.getByText('-1.24')).toBeInTheDocument()
   })
 
-  it('shows a formatted positive number', () => {
-    render(<Number value={1.239} />, { wrapper: TestWrapper })
+  it('shows a formatted positive number with positive sign', () => {
+    render(<Number value={1.239} showPositiveSign />, { wrapper: TestWrapper })
 
     expect(screen.getByText('+1.24')).toBeInTheDocument()
+  })
+
+  it('shows a formatted positive number without positive sign', () => {
+    render(<Number value={1.239} showPositiveSign={false} />, {
+      wrapper: TestWrapper,
+    })
+
+    expect(screen.getByText('1.24')).toBeInTheDocument()
   })
 
   it('shows a formatted negative number with percentage', () => {
@@ -34,8 +42,10 @@ describe('Number component', () => {
     expect(screen.getByText('-1.24%')).toBeInTheDocument()
   })
 
-  it('shows a formatted positive number  with percentage', () => {
-    render(<Number value={1.239} percentage />, { wrapper: TestWrapper })
+  it('shows a formatted positive number with percentage', () => {
+    render(<Number value={1.239} percentage showPositiveSign />, {
+      wrapper: TestWrapper,
+    })
 
     expect(screen.getByText('+1.24%')).toBeInTheDocument()
   })
