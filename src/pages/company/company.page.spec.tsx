@@ -50,53 +50,13 @@ describe('Company page', () => {
 
     render(<CompanyPage />, { wrapper: TestWrapper })
 
-    expect(await screen.findByText('IBM')).toBeInTheDocument()
+    expect(await screen.findByText('(IBM)')).toBeInTheDocument()
     expect(
       screen.getByText('International Business Machines Corp.')
     ).toBeInTheDocument()
     expect(screen.getByText('1000.34')).toBeInTheDocument()
     expect(getCompanyApiCall).toHaveBeenCalledWith('IBM')
     expect(getQuoteApiCall).toHaveBeenCalledWith('IBM')
-  })
-
-  it('shows the latest volume by default', async () => {
-    setUpMocks(
-      {
-        status: 200,
-        data: new CompanyBuilder().build(),
-      },
-      {
-        status: 200,
-        data: new QuoteBuilder()
-          .withLatestVolume(421354558)
-          .withPreviousVolume(null)
-          .build(),
-      }
-    )
-
-    render(<CompanyPage />, { wrapper: TestWrapper })
-
-    expect(await screen.findByText(421354558)).toBeInTheDocument()
-  })
-
-  it('shows the previous volume whe latest volume is no available', async () => {
-    setUpMocks(
-      {
-        status: 200,
-        data: new CompanyBuilder().build(),
-      },
-      {
-        status: 200,
-        data: new QuoteBuilder()
-          .withLatestVolume(null)
-          .withPreviousVolume(73769270)
-          .build(),
-      }
-    )
-
-    render(<CompanyPage />, { wrapper: TestWrapper })
-
-    expect(await screen.findByText(73769270)).toBeInTheDocument()
   })
 
   it('shows an message when there is no company with the given symbol', async () => {
