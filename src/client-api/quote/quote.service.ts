@@ -4,7 +4,10 @@ import Quote from './quote.model'
 
 class QuoteService extends ApiService {
   public async getQuote(symbol: string): Promise<ApiCallResponse<Quote>> {
-    const { status, error, data } = await this.get(`/v1/stock/${symbol}/quote`)
+    const { status, error, data } = await this.get(
+      `/v1/stock/${symbol}/quote`,
+      { displayPercent: 'true' }
+    )
     return {
       status,
       error,
