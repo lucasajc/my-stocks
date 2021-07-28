@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const environmentVariables = require(`../../env/${process.env.NODE_ENV}.json`)
 
@@ -52,6 +53,15 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(environmentVariables)
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, '../../public/assets/**/*.svg'),
+          context: path.resolve(__dirname, '../../public/assets/'),
+          to: path.resolve(__dirname, '../../dist/assets/')
+        }
+      ]
     })
   ],
   devServer: {
