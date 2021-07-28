@@ -8,20 +8,27 @@ describe('Card quote summary component', () => {
     render(
       <CardQuoteSummary
         week52Low={1}
-        week52High={1}
-        peRatio={1}
-        iexBidPrice={1}
-        iexBidSize={1}
-        iexAskPrice={1}
-        iexAskSize={1}
-        marketCap={1}
+        week52High={2}
+        peRatio={3}
+        iexBidPrice={4}
+        iexBidSize={5}
+        iexAskPrice={6}
+        iexAskSize={7}
+        marketCap={31000000000}
       />,
       {
         wrapper: TestWrapper,
       }
     )
 
-    expect(screen.getAllByText('1.00')).toHaveLength(5)
-    expect(screen.getAllByText('1')).toHaveLength(2)
+    expect(screen.getByText('1.00')).toBeInTheDocument()
+    expect(screen.getByText('2.00')).toBeInTheDocument()
+    expect(screen.getByText('3.00')).toBeInTheDocument()
+    expect(screen.getByText('4.00')).toBeInTheDocument()
+    expect(screen.getByText('5')).toBeInTheDocument()
+    expect(screen.getByText('6.00')).toBeInTheDocument()
+    expect(screen.getByText('7')).toBeInTheDocument()
+    expect(screen.getByText('31.00')).toBeInTheDocument()
+    expect(screen.getByText('B')).toBeInTheDocument()
   })
 })
