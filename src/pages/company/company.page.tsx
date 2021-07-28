@@ -8,6 +8,7 @@ import { CardContainer, Container, Header, Title } from './company.page.styled'
 import { CardLatestPrice } from './card-latest-price/card-latest-price.component'
 import { CardVolume } from './card-volume/card-volume.component'
 import { CardQuoteSummary } from './card-quote-summary/card-quote-summary.component'
+import { CardCompanyDetails } from './card-company-details/card-company-details.component'
 
 function CompanyPage() {
   const { symbol } = useParams<{ symbol: string }>()
@@ -71,6 +72,16 @@ function CompanyPage() {
               week52Low={quote.week52Low}
             />
           </CardContainer>
+          <CardCompanyDetails
+            industry={company.industry}
+            website={company.website}
+            CEO={company.CEO}
+            sector={company.sector}
+            employees={company.employees}
+            tags={company.tags}
+            city={company.city}
+            country={company.country}
+          />
         </>
       )}
       {(getCompanyError || getQuoteError) && (
