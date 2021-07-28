@@ -9,6 +9,7 @@ interface IProps extends HTMLProps<HTMLButtonElement> {
 export const Button = ({
   variant,
   length,
+  disabled,
   onClick,
   children,
 }: PropsWithChildren<IProps>) => {
@@ -18,6 +19,7 @@ export const Button = ({
       variant={variant || 'primary'}
       length={length}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </ButtonStyled>

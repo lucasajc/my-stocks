@@ -27,4 +27,11 @@ export const Button = styled.button<ButtonProps>`
     border: 1px solid
       ${(props) => props.theme.button[props.variant].hover.borderColor};
   }
+  &:disabled {
+    cursor: not-allowed;
+    background-color: ${(props) =>
+      props.theme.button[props.variant].disabled.backgroundColor};
+    border-color: ${(props) =>
+      props.theme.button[props.variant].disabled.borderColor};
+  }
 `

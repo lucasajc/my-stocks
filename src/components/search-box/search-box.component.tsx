@@ -8,14 +8,18 @@ interface IProps {
 
 export const SearchBox = ({ placeholder, onSearch }: IProps) => {
   const [searchText, setSearchText] = useState<string>('')
+  const onSubmit = () => {
+    if (!searchText) return
+    onSearch(searchText)
+  }
 
   return (
-    <Container onSubmit={() => onSearch(searchText)}>
+    <Container onSubmit={onSubmit}>
       <Input
         placeholder={placeholder}
         onChange={(event) => setSearchText(event.target.value)}
       />
-      <Button variant="primary" onClick={() => onSearch(searchText)}>
+      <Button variant="primary" onClick={onSubmit} disabled={!searchText}>
         Search
       </Button>
     </Container>

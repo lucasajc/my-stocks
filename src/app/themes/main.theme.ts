@@ -1,6 +1,7 @@
 const colors = {
   primary: '#ff3c64',
   secondary: '#f4f2f2',
+  gray: '#cccccc',
 }
 
 export const main = {
@@ -61,6 +62,11 @@ export const main = {
         backgroundColor: '#000000',
         textColor: '#ffffff',
         borderColor: '#000000',
+      },
+      disabled: {
+        backgroundColor: colors.gray,
+        textColor: '#ffffff',
+        borderColor: colors.gray,
       },
     },
     secondary: {
