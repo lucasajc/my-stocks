@@ -8,6 +8,7 @@ interface IProps extends TextProps {
   showPositiveSign?: boolean
   withColors?: boolean
   wrappedByParenthesis?: boolean
+  className?: string
 }
 
 const signMap = {
@@ -24,6 +25,7 @@ export const Number = ({
   showPositiveSign = false,
   withColors = false,
   wrappedByParenthesis = false,
+  className,
 }: IProps) => {
   const sign = useMemo(() => {
     let signName = 'zero'
@@ -47,6 +49,7 @@ export const Number = ({
       size={size}
       weight={weight}
       withColors={withColors}
+      className={className}
     >
       {wrappedByParenthesis ? `(${output})` : output}
     </NumberStyled>

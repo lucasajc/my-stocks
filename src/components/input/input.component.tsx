@@ -10,6 +10,7 @@ export const Input = ({
   variant,
   placeholder,
   onChange,
+  className,
   children,
 }: PropsWithChildren<IProps>) => {
   return (
@@ -17,6 +18,7 @@ export const Input = ({
       onChange={onChange}
       placeholder={placeholder}
       variant={variant || 'primary'}
+      className={className}
     >
       {children}
     </InputStyled>
