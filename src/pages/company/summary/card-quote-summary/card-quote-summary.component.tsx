@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import { Quote } from 'client-api/quote'
 import { Text } from 'components/text/text.component'
 import { Card } from 'components/card/card.component'
@@ -16,6 +16,23 @@ type Props = Pick<
   | 'peRatio'
   | 'marketCap'
 >
+
+const isNumber = (value: number) => {
+  return typeof value === 'number'
+}
+
+const SummaryField = ({
+  isFieldAvailable,
+  children,
+}: PropsWithChildren<{
+  isFieldAvailable: boolean
+}>) => {
+  return (
+    <Text size="sm" weight="normal">
+      {isFieldAvailable ? <>{children}</> : <span>N/A</span>}
+    </Text>
+  )
+}
 
 export const CardQuoteSummary = ({
   iexAskPrice,
@@ -36,11 +53,13 @@ export const CardQuoteSummary = ({
           </Text>
         </Cell>
         <Cell>
-          <Text size="sm" weight="normal">
+          <SummaryField
+            isFieldAvailable={isNumber(iexBidPrice) && isNumber(iexBidSize)}
+          >
             <Number value={iexBidPrice} size="sm" />
             <span> x </span>
             <span>{iexBidSize}</span>
-          </Text>
+          </SummaryField>
         </Cell>
         <Cell>
           <Text size="sm" weight="light">
@@ -48,11 +67,13 @@ export const CardQuoteSummary = ({
           </Text>
         </Cell>
         <Cell>
-          <Text size="sm" weight="normal">
+          <SummaryField
+            isFieldAvailable={isNumber(iexAskPrice) && isNumber(iexAskSize)}
+          >
             <Number value={iexAskPrice} size="sm" />
             <span> x </span>
             <span>{iexAskSize}</span>
-          </Text>
+          </SummaryField>
         </Cell>
         <Cell>
           <Text size="sm" weight="light">
@@ -60,11 +81,13 @@ export const CardQuoteSummary = ({
           </Text>
         </Cell>
         <Cell>
-          <Text size="sm" weight="normal">
+          <SummaryField
+            isFieldAvailable={isNumber(week52Low) && isNumber(week52High)}
+          >
             <Number value={week52Low} size="sm" />
             <span> - </span>
             <Number value={week52High} size="sm" />
-          </Text>
+          </SummaryField>
         </Cell>
         <Cell>
           <Text size="sm" weight="light">
@@ -72,12 +95,10 @@ export const CardQuoteSummary = ({
           </Text>
         </Cell>
         <Cell>
-          <span>
+          <SummaryField isFieldAvailable={isNumber(marketCap)}>
             <Number value={marketCap / 1000000000} size="sm" weight="normal" />
-            <Text size="sm" weight="normal">
-              B
-            </Text>
-          </span>
+            <span>B</span>
+          </SummaryField>
         </Cell>
         <Cell>
           <Text size="sm" weight="light">
