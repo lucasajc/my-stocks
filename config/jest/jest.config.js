@@ -6,6 +6,8 @@ module.exports = {
   verbose: true,
   collectCoverage: false,
   forceExit: true,
+  watchAll: false,
+  maxConcurrency: 1,
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
     '!**/node_modules/**',
