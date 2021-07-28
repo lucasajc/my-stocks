@@ -49,4 +49,15 @@ describe('Number component', () => {
 
     expect(screen.getByText('+1.24%')).toBeInTheDocument()
   })
+
+  it('shows a number wrapped by parenthesis', () => {
+    render(
+      <Number value={1.239} wrappedByParenthesis percentage showPositiveSign />,
+      {
+        wrapper: TestWrapper,
+      }
+    )
+
+    expect(screen.getByText('(+1.24%)')).toBeInTheDocument()
+  })
 })

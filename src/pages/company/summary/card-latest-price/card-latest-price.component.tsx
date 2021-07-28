@@ -46,6 +46,7 @@ export const CardLatestPrice = ({
             percentage
             showPositiveSign
             withColors
+            wrappedByParenthesis
           />
         </PriceDetails>
       </div>
