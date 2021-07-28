@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import { Button, Container, Input } from './search-box.styled'
 
 interface IProps {
@@ -8,9 +8,10 @@ interface IProps {
 
 export const SearchBox = ({ placeholder, onSearch }: IProps) => {
   const [searchText, setSearchText] = useState<string>('')
-  const onSubmit = () => {
+  const onSubmit = (e: FormEvent) => {
     if (!searchText) return
     onSearch(searchText)
+    e.preventDefault()
   }
 
   return (
