@@ -23,7 +23,7 @@ describe('Card latest price component', () => {
     expect(screen.getByText('1.00')).toBeInTheDocument()
     expect(screen.getByText('2.00')).toBeInTheDocument()
     expect(screen.getByText('3.00')).toBeInTheDocument()
-    expect(screen.getByText('-4.00%')).toBeInTheDocument()
+    expect(screen.getByText('(-4.00%)')).toBeInTheDocument()
     expect(screen.getByText('+5.00')).toBeInTheDocument()
     expect(screen.getByText('6.00')).toBeInTheDocument()
     expect(screen.getByText('7.00')).toBeInTheDocument()
