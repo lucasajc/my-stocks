@@ -11,6 +11,7 @@ export const Input = styled.input<InputProps>`
   border: 1px solid;
   border-radius: 32px;
   height: 24px;
+  font-size: 14px;
   background-color: ${(props) =>
     props.theme.input[props.variant].default.backgroundColor};
   border-color: ${(props) =>
