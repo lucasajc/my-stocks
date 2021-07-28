@@ -3,13 +3,11 @@ import styled from 'styled-components'
 export const Card = styled.div`
   background: ${(props) => props.theme.card.backgroundColor};
   padding: 24px;
+  margin: 8px;
   border-radius: 16px;
   box-shadow: 1px 1px 2px #ddd;
-
-  @media only screen and (min-width: 480px) {
-    min-width: 266px;
-    flex: 1;
-  }
+  min-width: 266px;
+  flex: 1;
 `
 
 export const CardHeader = styled.div`

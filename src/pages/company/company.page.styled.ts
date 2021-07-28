@@ -15,15 +15,6 @@ export const Title = styled.h2`
 `
 
 export const CardContainer = styled.div`
-  > * {
-    margin-bottom: 16px;
-  }
-
-  @media only screen and (min-width: 480px) {
-    display: flex;
-    flex-wrap: wrap;
-    > * {
-      margin-right: 16px;
-    }
-  }
+  display: flex;
+  flex-wrap: wrap;
 `
