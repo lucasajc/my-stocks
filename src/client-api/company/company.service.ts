@@ -3,15 +3,8 @@ import ApiService from '../api.service'
 import Company from './company.model'
 
 class CompanyService extends ApiService {
-  public async getCompany(symbol: string): Promise<ApiCallResponse<Company>> {
-    const { status, error, data } = await this.get(
-      `/v1/stock/${symbol}/company`
-    )
-    return {
-      status,
-      error,
-      data: data ? new Company(data) : null,
-    }
+  public getCompany(symbol: string): Promise<ApiCallResponse<Company>> {
+    return this.get(`/v1/stock/${symbol}/company`)
   }
 }
 

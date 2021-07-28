@@ -3,16 +3,8 @@ import ApiService from '../api.service'
 import Quote from './quote.model'
 
 class QuoteService extends ApiService {
-  public async getQuote(symbol: string): Promise<ApiCallResponse<Quote>> {
-    const { status, error, data } = await this.get(
-      `/v1/stock/${symbol}/quote`,
-      { displayPercent: 'true' }
-    )
-    return {
-      status,
-      error,
-      data: data ? new Quote(data) : null,
-    }
+  public getQuote(symbol: string): Promise<ApiCallResponse<Quote>> {
+    return this.get(`/v1/stock/${symbol}/quote`, { displayPercent: 'true' })
   }
 }
 
