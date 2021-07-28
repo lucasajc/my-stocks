@@ -6,7 +6,7 @@ import { Number } from 'components/number/number.component'
 import { Cell, Grid } from '../grid/grid.styled'
 
 type Props = Pick<
-  Quote,
+  Partial<Quote>,
   | 'week52High'
   | 'week52Low'
   | 'iexAskPrice'
@@ -73,7 +73,11 @@ export const CardQuoteSummary = ({
         </Cell>
         <Cell>
           <span>
-            <Number value={marketCap / 1000000000} size="sm" weight="normal" />
+            <Number
+              value={marketCap ? marketCap / 1000000000 : 0}
+              size="sm"
+              weight="normal"
+            />
             <Text size="sm" weight="normal">
               B
             </Text>

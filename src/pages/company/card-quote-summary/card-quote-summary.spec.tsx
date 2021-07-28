@@ -14,7 +14,6 @@ describe('Card quote summary component', () => {
         iexBidSize={5}
         iexAskPrice={6}
         iexAskSize={7}
-        marketCap={0}
       />,
       {
         wrapper: TestWrapper,
@@ -28,7 +27,5 @@ describe('Card quote summary component', () => {
     expect(screen.getByText('5')).toBeInTheDocument()
     expect(screen.getByText('6.00')).toBeInTheDocument()
     expect(screen.getByText('7')).toBeInTheDocument()
-    expect(screen.getByText('0.00')).toBeInTheDocument()
-    expect(screen.getByText('B')).toBeInTheDocument()
   })
 })
