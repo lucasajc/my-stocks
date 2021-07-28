@@ -55,6 +55,11 @@ class CompanyBuilder implements Company {
     return this
   }
 
+  withIndustry(industry: string) {
+    this.industry = industry
+    return this
+  }
+
   build() {
     return this
   }

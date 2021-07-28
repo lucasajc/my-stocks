@@ -5,7 +5,7 @@ import {
   CardLatestPriceGrid,
   CardLatestPrice as Card,
   PriceDetails,
-} from 'pages/company/card-latest-price/card-latest-price.styled'
+} from 'pages/company/summary/card-latest-price/card-latest-price.styled'
 import { Quote } from 'client-api/quote'
 import { CardHeader, CardPrimaryContent } from 'components/card/card.component'
 import { Cell } from '../grid/grid.styled'

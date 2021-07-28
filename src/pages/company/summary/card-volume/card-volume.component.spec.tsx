@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { TestWrapper } from 'common/test-wrapper'
-import { CardVolume } from 'pages/company/card-volume/card-volume.component'
+import { CardVolume } from 'pages/company/summary/card-volume/card-volume.component'
 
 describe('Card volume component', () => {
   it('shows the latest volume by default', () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { TestWrapper } from 'common/test-wrapper'
-import { CardQuoteSummary } from 'pages/company/card-quote-summary/card-quote-summary.component'
+import { CardQuoteSummary } from 'pages/company/summary/card-quote-summary/card-quote-summary.component'
 
 describe('Card quote summary component', () => {
   it('shows the quote summary with formatted values', () => {

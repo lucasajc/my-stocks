@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { TestWrapper } from 'common/test-wrapper'
-import { CardLatestPrice } from 'pages/company/card-latest-price/card-latest-price.component'
+import { CardLatestPrice } from 'pages/company/summary/card-latest-price/card-latest-price.component'
 
 describe('Card latest price component', () => {
   it('shows the formatted content', () => {

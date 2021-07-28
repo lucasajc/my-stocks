@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Card } from 'components/card/card.component'
-import { Grid } from 'pages/company/grid/grid.styled'
+import { Grid } from 'pages/company/summary/grid/grid.styled'
 
 export const CardLatestPrice = styled(Card)`
   display: flex;

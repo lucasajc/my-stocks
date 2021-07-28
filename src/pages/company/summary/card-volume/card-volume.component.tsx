@@ -6,7 +6,7 @@ import {
   CardPrimaryContent,
 } from 'components/card/card.component'
 import { Text } from 'components/text/text.component'
-import { CardFooterStyled as CardFooter } from 'pages/company/card-volume/card-volume.styled'
+import { CardFooterStyled as CardFooter } from 'pages/company/summary/card-volume/card-volume.styled'
 
 type Props = Pick<Quote, 'latestVolume' | 'previousVolume' | 'avgTotalVolume'>
 

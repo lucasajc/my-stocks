@@ -140,6 +140,11 @@ class QuoteBuilder implements Quote {
     return this
   }
 
+  withPeRatio(peRatio: number) {
+    this.peRatio = peRatio
+    return this
+  }
+
   build() {
     return this
   }
