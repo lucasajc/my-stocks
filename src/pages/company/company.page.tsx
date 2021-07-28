@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { CompanyService } from 'client-api/company'
 import Company from 'client-api/company/company.model'
 import { Quote, QuoteService } from 'client-api/quote'
 import { Text } from 'components/text/text.component'
+import { SearchBox } from 'components/search-box/search-box.component'
 import { Container, Header, Title } from './company.page.styled'
 import { CompanySummary } from './summary/company-summary.component'
 
 function CompanyPage() {
   const { symbol } = useParams<{ symbol: string }>()
+  const history = useHistory()
   const [company, setCompany] = useState<Company>()
   const [quote, setQuote] = useState<Quote>()
   const [getCompanyError, setGetCompanyError] = useState<boolean>()
   const [getQuoteError, setGetQuoteError] = useState<boolean>()
+
+  const onSearch = (symbolToSearch: string) => {
+    history.push(`/company/${symbolToSearch}`)
+  }
 
   useEffect(() => {
     CompanyService.getCompany(symbol).then(async (response) => {
@@ -27,6 +33,7 @@ function CompanyPage() {
 
   return (
     <Container>
+      <SearchBox onSearch={onSearch} placeholder="Search for a company..." />
       {company && quote && (
         <>
           <Header>

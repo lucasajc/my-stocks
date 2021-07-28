@@ -46,6 +46,7 @@
     "lines-between-class-members": "off",
     "class-methods-use-this": "off",
     "react/require-default-props": "off",
-    "no-confusing-arrow": "off"
+    "no-confusing-arrow": "off",
+    "function-paren-newline": "off"
   }
 }

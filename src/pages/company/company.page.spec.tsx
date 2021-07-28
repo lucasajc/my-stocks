@@ -1,5 +1,7 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { Router } from 'react-router-dom'
+import { render, screen, waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import CompanyPage from 'pages/company/company.page'
 import { TestWrapper } from 'common/test-wrapper'
 import { CompanyService } from 'client-api/company'
@@ -7,6 +9,7 @@ import { Quote, QuoteService } from 'client-api/quote'
 import { CompanyBuilder, QuoteBuilder } from 'common/builders/'
 import { ApiCallResponse } from 'client-api/api.service.interfaces'
 import Company from 'client-api/company/company.model'
+import { createMemoryHistory } from 'history'
 
 let symbol = 'IBM'
 
@@ -78,6 +81,27 @@ describe('Company page', () => {
       await screen.findByText(
         'We could not find any company with the symbol IBN'
       )
+    )
+  })
+
+  it('goes to the url of a specified company when user searches for a company', async () => {
+    const history = createMemoryHistory()
+    history.push = jest.fn()
+    render(
+      <Router history={history}>
+        <CompanyPage />
+      </Router>,
+      { wrapper: TestWrapper }
+    )
+
+    userEvent.type(
+      screen.getByPlaceholderText('Search for a company...'),
+      'AAPL'
+    )
+    userEvent.click(screen.getByText('Search'))
+
+    await waitFor(() =>
+      expect(history.push).toHaveBeenCalledWith('/company/AAPL')
     )
   })
 })
