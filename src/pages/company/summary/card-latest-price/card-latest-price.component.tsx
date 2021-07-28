@@ -10,16 +10,22 @@ import { Quote } from 'client-api/quote'
 import { CardHeader, CardPrimaryContent } from 'components/card/card.component'
 import { Cell } from '../grid/grid.styled'
 
-type Props = Pick<
-  Quote,
-  | 'latestPrice'
-  | 'change'
-  | 'changePercent'
-  | 'high'
-  | 'low'
-  | 'iexOpen'
-  | 'iexClose'
+type Props = Partial<
+  Pick<
+    Quote,
+    | 'latestPrice'
+    | 'change'
+    | 'changePercent'
+    | 'high'
+    | 'low'
+    | 'iexOpen'
+    | 'iexClose'
+  >
 >
+
+const isNumber = (value: number) => {
+  return typeof value === 'number'
+}
 
 export const CardLatestPrice = ({
   latestPrice,
@@ -38,16 +44,22 @@ export const CardLatestPrice = ({
             Latest price
           </Text>
         </CardHeader>
-        <CardPrimaryContent>{latestPrice.toFixed(2)}</CardPrimaryContent>
+        <CardPrimaryContent>
+          {latestPrice ? latestPrice.toFixed(2) : 'N/A'}
+        </CardPrimaryContent>
         <PriceDetails>
-          <Number value={change} showPositiveSign withColors />
-          <Number
-            value={changePercent}
-            percentage
-            showPositiveSign
-            withColors
-            wrappedByParenthesis
-          />
+          {isNumber(change) && (
+            <Number value={change} showPositiveSign withColors />
+          )}
+          {isNumber(changePercent) && (
+            <Number
+              value={changePercent}
+              percentage
+              showPositiveSign
+              withColors
+              wrappedByParenthesis
+            />
+          )}
         </PriceDetails>
       </div>
       <CardLatestPriceGrid>

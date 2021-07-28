@@ -28,4 +28,43 @@ describe('Card latest price component', () => {
     expect(screen.getByText('6.00')).toBeInTheDocument()
     expect(screen.getByText('7.00')).toBeInTheDocument()
   })
+
+  it('shows N/A label when data is not available', () => {
+    render(
+      <CardLatestPrice
+        latestPrice={null}
+        low={null}
+        high={null}
+        changePercent={null}
+        change={null}
+        iexClose={null}
+        iexOpen={null}
+      />,
+      {
+        wrapper: TestWrapper,
+      }
+    )
+
+    expect(screen.getAllByText('N/A')).toHaveLength(5)
+  })
+
+  it('shows formatted change and change percent numbers when values are zero', () => {
+    render(
+      <CardLatestPrice
+        latestPrice={null}
+        low={null}
+        high={null}
+        changePercent={0}
+        change={0}
+        iexClose={null}
+        iexOpen={null}
+      />,
+      {
+        wrapper: TestWrapper,
+      }
+    )
+
+    expect(screen.getByText('0.00')).toBeInTheDocument()
+    expect(screen.getByText('(0.00%)')).toBeInTheDocument()
+  })
 })
