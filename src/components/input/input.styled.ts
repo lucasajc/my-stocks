@@ -12,8 +12,13 @@ export const Input = styled.input<InputProps>`
   border-radius: 32px;
   height: 24px;
   font-size: 14px;
+  transition: box-shadow 0.2s ease-in;
   background-color: ${(props) =>
     props.theme.input[props.variant].default.backgroundColor};
   border-color: ${(props) =>
     props.theme.input[props.variant].default.borderColor};
+  &:focus {
+    box-shadow: inset 0 0 0 1px
+      ${(props) => props.theme.input[props.variant].default.borderColor};
+  }
 `
