@@ -17,7 +17,7 @@ const signMap = {
 }
 
 export const Number = ({
-  value = 0,
+  value,
   percentage = false,
   size = 'md',
   weight = 'normal',
@@ -31,10 +31,15 @@ export const Number = ({
     else if (value < 0) signName = 'negative'
     return signName as 'positive' | 'negative' | 'zero'
   }, [value])
-  const formattedValue = value ? value.toFixed(2) : '0.00'
-  const percentageSign = percentage ? '%' : ''
-  const signValue = showPositiveSign ? signMap[sign] : ''
-  const output = `${signValue}${formattedValue}${percentageSign}`
+
+  const output = useMemo(() => {
+    if (value === null || value === undefined) {
+      return 'N/A'
+    }
+    const percentageSign = percentage ? '%' : ''
+    const signValue = showPositiveSign ? signMap[sign] : ''
+    return `${signValue}${value.toFixed(2)}${percentageSign}`
+  }, [value, sign, percentage, showPositiveSign])
 
   return (
     <NumberStyled

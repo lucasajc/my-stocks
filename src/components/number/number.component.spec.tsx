@@ -10,8 +10,14 @@ describe('Number component', () => {
     expect(screen.getByText('0.00')).toBeInTheDocument()
   })
 
-  it('shows zero when value is not provided', () => {
+  it('shows N/A label when value is not provided', () => {
     render(<Number />, { wrapper: TestWrapper })
+
+    expect(screen.getByText('N/A')).toBeInTheDocument()
+  })
+
+  it('shows formatted zero number when value is zero', () => {
+    render(<Number value={0} />, { wrapper: TestWrapper })
 
     expect(screen.getByText('0.00')).toBeInTheDocument()
   })
