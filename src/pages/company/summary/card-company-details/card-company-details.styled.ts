@@ -15,9 +15,3 @@ export const Grid = styled.div`
     grid-gap: 36px;
   }
 `
-
-export const Cell = styled.div`
-  @media only screen and (min-width: 480px) {
-    padding: 0 8px 8px 0;
-  }
-`
