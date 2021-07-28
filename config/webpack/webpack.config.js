@@ -1,6 +1,7 @@
-const webpack  = require('webpack')
+const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+
 const environmentVariables = require(`../../env/${process.env.NODE_ENV}.json`)
 
 module.exports = {
@@ -15,7 +16,18 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'assets/[name].[ext]',
+            }
+          },
+        ],
       },
     ],
   },
