@@ -79,9 +79,10 @@ describe('Company page', () => {
 
     expect(
       await screen.findByText(
-        'We could not find any company with the symbol IBN'
+        'Sorry, we could not find any company with the given symbol'
       )
     )
+    expect(screen.getByText('"IBN"'))
   })
 
   it('goes to the url of a specified company when user searches for a company', async () => {

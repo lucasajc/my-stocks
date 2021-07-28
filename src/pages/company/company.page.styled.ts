@@ -18,3 +18,8 @@ export const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
 `
+
+export const ContainerNotFound = styled.div`
+  margin-top: 36px;
+  max-width: 440px;
+`

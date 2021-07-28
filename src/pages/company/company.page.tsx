@@ -5,7 +5,12 @@ import Company from 'client-api/company/company.model'
 import { Quote, QuoteService } from 'client-api/quote'
 import { Text } from 'components/text/text.component'
 import { SearchBox } from 'components/search-box/search-box.component'
-import { Container, Header, Title } from './company.page.styled'
+import {
+  Container,
+  ContainerNotFound,
+  Header,
+  Title,
+} from './company.page.styled'
 import { CompanySummary } from './summary/company-summary.component'
 
 function CompanyPage() {
@@ -53,9 +58,21 @@ function CompanyPage() {
           <CompanySummary company={company} quote={quote} />
         </>
       )}
-      {(getCompanyError || getQuoteError) && (
-        <span>{`We could not find any company with the symbol ${symbol}`}</span>
-      )}
+      <ContainerNotFound>
+        {(getCompanyError || getQuoteError) && (
+          <>
+            <Text weight="light" size="xxlg">
+              <span>
+                {'Sorry, we could not find any company with the given symbol '}
+              </span>
+              <strong>{`"${symbol}"`}</strong>
+            </Text>
+            <Text weight="light" size="sm">
+              <p>Try searching for another symbol, such as IBM, AAPL, MSFT.</p>
+            </Text>
+          </>
+        )}
+      </ContainerNotFound>
     </Container>
   )
 }
