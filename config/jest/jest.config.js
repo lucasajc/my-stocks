@@ -5,6 +5,7 @@ module.exports = {
   testEnvironment: 'jsdom',
   verbose: true,
   collectCoverage: false,
+  forceExit: true,
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
     '!**/node_modules/**',
