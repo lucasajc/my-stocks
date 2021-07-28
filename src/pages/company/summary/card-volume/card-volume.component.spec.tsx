@@ -16,11 +16,20 @@ describe('Card volume component', () => {
     expect(screen.getByText('3')).toBeInTheDocument()
   })
 
-  it('shows the previous volume whe latest volume is no available', () => {
+  it('shows the previous volume when the latest volume is not available', () => {
     render(<CardVolume previousVolume={73769270} avgTotalVolume={1} />, {
       wrapper: TestWrapper,
     })
 
     expect(screen.getByText('73769270')).toBeInTheDocument()
+  })
+
+  it('shows N/A label when data is not provided', () => {
+    render(<CardVolume />, {
+      wrapper: TestWrapper,
+    })
+
+    expect(screen.getAllByText('N/A')[0]).toBeInTheDocument()
+    expect(screen.getAllByText('N/A')[1]).toBeInTheDocument()
   })
 })

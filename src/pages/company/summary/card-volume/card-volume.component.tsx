@@ -8,7 +8,9 @@ import {
 import { Text } from 'components/text/text.component'
 import { CardFooterStyled as CardFooter } from 'pages/company/summary/card-volume/card-volume.styled'
 
-type Props = Pick<Quote, 'latestVolume' | 'previousVolume' | 'avgTotalVolume'>
+type Props = Partial<
+  Pick<Quote, 'latestVolume' | 'previousVolume' | 'avgTotalVolume'>
+>
 
 export const CardVolume = ({
   latestVolume,
@@ -22,13 +24,15 @@ export const CardVolume = ({
           Volume
         </Text>
       </CardHeader>
-      <CardPrimaryContent>{latestVolume || previousVolume}</CardPrimaryContent>
+      <CardPrimaryContent>
+        {latestVolume || previousVolume || 'N/A'}
+      </CardPrimaryContent>
       <CardFooter>
         <Text size="sm" weight="light">
           Average total volume:
         </Text>
         <Text size="sm" weight="normal">
-          {avgTotalVolume}
+          {avgTotalVolume || 'N/A'}
         </Text>
       </CardFooter>
     </Card>
