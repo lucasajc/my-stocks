@@ -5,7 +5,7 @@ module.exports = {
   testEnvironment: 'jsdom',
   verbose: true,
   collectCoverage: false,
-  forceExit: true,
+  forceExit: false,
   watchAll: false,
   maxConcurrency: 1,
   collectCoverageFrom: [

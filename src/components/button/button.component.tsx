@@ -11,6 +11,7 @@ export const Button = ({
   length,
   disabled,
   onClick,
+  className,
   children,
 }: PropsWithChildren<IProps>) => {
   return (
@@ -20,6 +21,7 @@ export const Button = ({
       length={length}
       onClick={onClick}
       disabled={disabled}
+      className={className}
     >
       {children}
     </ButtonStyled>

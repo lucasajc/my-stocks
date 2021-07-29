@@ -7,7 +7,7 @@ export const Container = styled.div`
 `
 
 export const Header = styled.div`
-  padding: 0 8px 12px;
+  padding: 32px 8px 12px;
 `
 
 export const Title = styled.h2`
