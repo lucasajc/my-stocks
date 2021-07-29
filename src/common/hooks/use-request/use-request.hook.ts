@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { ApiCallResponse } from 'client-api/api.service.interfaces'
 
 type RequestStatus = 'loading' | 'success' | 'error' | 'idle'
@@ -6,6 +6,7 @@ type RequestStatus = 'loading' | 'success' | 'error' | 'idle'
 interface IUseRequest<T> {
   data: T
   status: RequestStatus
+  call: () => void
 }
 
 const useRequest = <T>(
@@ -14,7 +15,7 @@ const useRequest = <T>(
   const [status, setStatus] = useState<RequestStatus>('idle')
   const [data, setData] = useState<T>()
 
-  useEffect(() => {
+  const call = () => {
     setStatus('loading')
     request()
       .then(async (response) => {
@@ -24,9 +25,9 @@ const useRequest = <T>(
       .catch(() => {
         setStatus('error')
       })
-  }, [])
+  }
 
-  return { data, status }
+  return { data, status, call }
 }
 
 export default useRequest

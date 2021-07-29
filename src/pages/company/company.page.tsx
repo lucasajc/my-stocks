@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import { Company, CompanyService } from 'client-api/company'
 import { Quote, QuoteService } from 'client-api/quote'
@@ -21,12 +21,21 @@ function CompanyPage() {
   const { symbol } = useParams<{ symbol: string }>()
   const history = useHistory()
   const { favoriteCompanies, favorite, unfavorite } = useFavorites()
-  const { data: company, status: getCompanyStatus } = useRequest<Company>(() =>
-    CompanyService.getCompany(symbol)
-  )
-  const { data: quote, status: getQuoteStatus } = useRequest<Quote>(() =>
-    QuoteService.getQuote(symbol)
-  )
+  const {
+    data: company,
+    status: getCompanyStatus,
+    call: callGetCompany,
+  } = useRequest<Company>(() => CompanyService.getCompany(symbol))
+  const {
+    data: quote,
+    status: getQuoteStatus,
+    call: callGetQuote,
+  } = useRequest<Quote>(() => QuoteService.getQuote(symbol))
+
+  useEffect(() => {
+    callGetCompany()
+    callGetQuote()
+  }, [symbol])
 
   const isFavorite = useMemo(() => {
     if (!company) return false

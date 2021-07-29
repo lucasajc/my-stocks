@@ -38,7 +38,7 @@ describe('Company page', () => {
   }
 
   const renderCompanyPage = () => {
-    render(
+    return render(
       <Router history={history}>
         <CompanyPage />
       </Router>,
@@ -165,5 +165,42 @@ describe('Company page', () => {
       )
     )
     expect(screen.getByText('"IBN"'))
+  })
+
+  it('calls service when page is rerendered with another symbol', async () => {
+    jest.resetAllMocks()
+    const getCompanyApiCall = jest
+      .spyOn(CompanyService, 'getCompany')
+      .mockResolvedValueOnce({
+        data: new CompanyBuilder().withSymbol('first-symbol').build(),
+      })
+      .mockResolvedValueOnce({
+        data: new CompanyBuilder().withSymbol('second-symbol').build(),
+      })
+    const getQuoteApiCall = jest
+      .spyOn(QuoteService, 'getQuote')
+      .mockResolvedValueOnce({
+        data: new QuoteBuilder().withSymbol('first-symbol').build(),
+      })
+      .mockResolvedValueOnce({
+        data: new QuoteBuilder().withSymbol('second-symbol').build(),
+      })
+
+    symbol = 'first-symbol'
+    const { rerender } = renderCompanyPage()
+    await screen.findByText('(first-symbol)')
+
+    symbol = 'second-symbol'
+    rerender(
+      <Router history={history}>
+        <CompanyPage />
+      </Router>
+    )
+    await screen.findByText('(second-symbol)')
+
+    expect(getCompanyApiCall).toHaveBeenNthCalledWith(1, 'first-symbol')
+    expect(getCompanyApiCall).toHaveBeenNthCalledWith(2, 'second-symbol')
+    expect(getQuoteApiCall).toHaveBeenNthCalledWith(1, 'first-symbol')
+    expect(getQuoteApiCall).toHaveBeenNthCalledWith(2, 'second-symbol')
   })
 })
