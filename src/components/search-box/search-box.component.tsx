@@ -20,7 +20,7 @@ export const SearchBox = ({ placeholder, onSearch }: IProps) => {
         placeholder={placeholder}
         onChange={(event) => setSearchText(event.target.value)}
       />
-      <Button variant="primary" onClick={onSubmit} disabled={!searchText}>
+      <Button variant="primary" onClick={onSubmit}>
         Search
       </Button>
     </Container>
