@@ -110,11 +110,13 @@ function CompanyPage() {
             </>
           )}
         </ContainerNotFound>
-        <ActionsContainer>
-          <Button variant="secondary" onClick={history.goBack}>
-            Go back
-          </Button>
-        </ActionsContainer>
+        {!isLoading && (
+          <ActionsContainer>
+            <Button variant="secondary" onClick={history.goBack}>
+              Go back
+            </Button>
+          </ActionsContainer>
+        )}
       </Container>
       {isLoading && <Loading />}
     </>
