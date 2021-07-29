@@ -1,13 +1,25 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import Company from 'client-api/company/company.model'
 
 export const favoriteCompaniesSlice = createSlice({
   name: 'favoriteCompanies',
   initialState: {
-    value: [],
+    value: JSON.parse(localStorage.getItem('favoriteCompanies')) || [],
   },
   reducers: {
-    add: (state, payloadAction) => {
-      state.value = [...state.value, payloadAction.payload]
+    add: (state, payloadAction: PayloadAction<Company>) => {
+      if (
+        !state.value.find(
+          (company: Company) => company.symbol === payloadAction.payload.symbol
+        )
+      ) {
+        state.value = [...state.value, payloadAction.payload]
+      }
+    },
+    remove: (state, payloadAction: PayloadAction<Company>) => {
+      state.value = state.value.filter(
+        (company: Company) => company.symbol !== payloadAction.payload.symbol
+      )
     },
   },
 })
