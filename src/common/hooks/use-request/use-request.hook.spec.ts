@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { act, renderHook } from '@testing-library/react-hooks'
 import { TestWrapper } from 'common/test-wrapper'
 import useRequest from './use-request.hook'
 
@@ -19,6 +19,7 @@ describe('Use request hook', () => {
       }
     )
 
+    act(() => result.current.call())
     await waitForNextUpdate()
 
     expect(result.current.data).toEqual({
@@ -41,6 +42,7 @@ describe('Use request hook', () => {
       }
     )
 
+    act(() => result.current.call())
     await waitForNextUpdate()
 
     expect(result.current.data).toBeFalsy()
@@ -55,6 +57,7 @@ describe('Use request hook', () => {
       }
     )
 
+    act(() => result.current.call())
     await waitForNextUpdate()
 
     expect(result.current.data).toBeFalsy()
