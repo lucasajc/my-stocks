@@ -91,7 +91,7 @@ describe('Company page', () => {
     history.goBack = jest.fn()
     renderCompanyPage()
 
-    userEvent.click(screen.getByRole('button', { name: 'Go back' }))
+    userEvent.click(await screen.findByRole('button', { name: 'Go back' }))
 
     await waitFor(() => expect(history.goBack).toHaveBeenCalled())
   })
