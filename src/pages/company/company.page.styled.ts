@@ -25,6 +25,12 @@ export const ContainerNotFound = styled.div`
   max-width: 440px;
 `
 
+export const ActionsContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+`
+
 export const Button = styled(ButtonUI)`
   width: 100%;
   @media only screen and (min-width: 480px) {

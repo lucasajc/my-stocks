@@ -72,29 +72,6 @@ describe('Company page', () => {
     expect(getQuoteApiCall).toHaveBeenCalledWith('IBM')
   })
 
-  it('shows an message when there is no company with the given symbol', async () => {
-    symbol = 'IBN'
-    setUpMocks(
-      {
-        status: 404,
-        error: 'Unknown symbol',
-      },
-      {
-        status: 200,
-        data: new QuoteBuilder().build(),
-      }
-    )
-
-    renderCompanyPage()
-
-    expect(
-      await screen.findByText(
-        'Sorry, we could not find any company with the given symbol'
-      )
-    )
-    expect(screen.getByText('"IBN"'))
-  })
-
   it('navigates to the url of a specified company when user searches for a company', async () => {
     history.push = jest.fn()
     renderCompanyPage()
@@ -117,5 +94,76 @@ describe('Company page', () => {
     userEvent.click(screen.getByRole('button', { name: 'Go back' }))
 
     await waitFor(() => expect(history.goBack).toHaveBeenCalled())
+  })
+
+  it('saves a company when user clicks on save button', async () => {
+    const company = new CompanyBuilder().withSymbol('IBM').build()
+    setUpMocks(
+      {
+        status: 200,
+        data: { ...company },
+      },
+      {
+        status: 200,
+        data: new QuoteBuilder().build(),
+      }
+    )
+    renderCompanyPage()
+
+    userEvent.type(
+      screen.getByPlaceholderText('Search for a company...'),
+      'ibm'
+    )
+    userEvent.click(screen.getByRole('button', { name: 'Search' }))
+    userEvent.click(await screen.findByText('Save'))
+
+    expect(await screen.findByText('Saved')).toBeInTheDocument()
+  })
+
+  it('removes a saved company when user clicks on favorite button', async () => {
+    const company = new CompanyBuilder().withSymbol('IBM').build()
+    setUpMocks(
+      {
+        status: 200,
+        data: { ...company },
+      },
+      {
+        status: 200,
+        data: new QuoteBuilder().build(),
+      }
+    )
+    renderCompanyPage()
+
+    userEvent.type(
+      screen.getByPlaceholderText('Search for a company...'),
+      'ibm'
+    )
+    userEvent.click(screen.getByRole('button', { name: 'Search' }))
+    userEvent.click(await screen.findByText('Saved'))
+
+    expect(await screen.findByText('Save')).toBeInTheDocument()
+  })
+
+  it('shows an message when there is no company with the given symbol', async () => {
+    symbol = 'IBN'
+    setUpMocks(
+      {
+        status: 404,
+        error: 'Unknown symbol',
+      },
+      {
+        status: 200,
+        data: new QuoteBuilder().build(),
+      }
+    )
+
+    renderCompanyPage()
+
+    expect(
+      await screen.findByText(
+        'Sorry, we could not find any company with the given symbol'
+      )
+    )
+    expect(screen.getByText('"IBN"'))
   })
 })
