@@ -1,5 +1,6 @@
 import React from 'react'
 import { Router } from 'react-router-dom'
+import { createMemoryHistory } from 'history'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import CompanyPage from 'pages/company/company.page'
@@ -9,9 +10,9 @@ import { Quote, QuoteService } from 'client-api/quote'
 import { CompanyBuilder, QuoteBuilder } from 'common/builders/'
 import { ApiCallResponse } from 'client-api/api.service.interfaces'
 import Company from 'client-api/company/company.model'
-import { createMemoryHistory } from 'history'
 
 let symbol = 'IBM'
+const history = createMemoryHistory()
 
 jest.mock(
   'react-router-dom',
@@ -36,6 +37,15 @@ describe('Company page', () => {
     return { getCompanyApiCall, getQuoteApiCall }
   }
 
+  const renderCompanyPage = () => {
+    render(
+      <Router history={history}>
+        <CompanyPage />
+      </Router>,
+      { wrapper: TestWrapper }
+    )
+  }
+
   it('shows company information and stock quote', async () => {
     const { getCompanyApiCall, getQuoteApiCall } = setUpMocks(
       {
@@ -51,7 +61,7 @@ describe('Company page', () => {
       }
     )
 
-    render(<CompanyPage />, { wrapper: TestWrapper })
+    renderCompanyPage()
 
     expect(await screen.findByText('(IBM)')).toBeInTheDocument()
     expect(
@@ -75,7 +85,7 @@ describe('Company page', () => {
       }
     )
 
-    render(<CompanyPage />, { wrapper: TestWrapper })
+    renderCompanyPage()
 
     expect(
       await screen.findByText(
@@ -85,24 +95,27 @@ describe('Company page', () => {
     expect(screen.getByText('"IBN"'))
   })
 
-  it('goes to the url of a specified company when user searches for a company', async () => {
-    const history = createMemoryHistory()
+  it('navigates to the url of a specified company when user searches for a company', async () => {
     history.push = jest.fn()
-    render(
-      <Router history={history}>
-        <CompanyPage />
-      </Router>,
-      { wrapper: TestWrapper }
-    )
+    renderCompanyPage()
 
     userEvent.type(
       screen.getByPlaceholderText('Search for a company...'),
       'AAPL'
     )
-    userEvent.click(screen.getByText('Search'))
+    userEvent.click(screen.getByRole('button', { name: 'Search' }))
 
     await waitFor(() =>
       expect(history.push).toHaveBeenCalledWith('/company/AAPL')
     )
+  })
+
+  it('navigates to previous URL when user clicks on go back button', async () => {
+    history.goBack = jest.fn()
+    renderCompanyPage()
+
+    userEvent.click(screen.getByRole('button', { name: 'Go back' }))
+
+    await waitFor(() => expect(history.goBack).toHaveBeenCalled())
   })
 })

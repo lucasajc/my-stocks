@@ -80,6 +80,11 @@ export const main = {
         textColor: '#ffffff',
         borderColor: '#000000',
       },
+      disabled: {
+        backgroundColor: colors.gray,
+        textColor: '#ffffff',
+        borderColor: colors.gray,
+      },
     },
   },
 }

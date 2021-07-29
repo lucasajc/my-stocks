@@ -21,7 +21,7 @@ describe('Company page component', () => {
       screen.getByPlaceholderText('Search for a company...'),
       'AAPL'
     )
-    userEvent.click(screen.getByText('Search'))
+    userEvent.click(screen.getByRole('button', { name: 'Search' }))
 
     await waitFor(() =>
       expect(history.push).toHaveBeenCalledWith('/company/AAPL')

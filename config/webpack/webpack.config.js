@@ -8,6 +8,7 @@ const environmentVariables = require(`../../env/${process.env.NODE_ENV}.json`)
 module.exports = {
   entry: './src/index.tsx',
   mode: 'development',
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {

@@ -7,6 +7,7 @@ import { Text } from 'components/text/text.component'
 import { SearchBox } from 'components/search-box/search-box.component'
 import { Loading } from 'components/loading/loading.component'
 import {
+  Button,
   Container,
   ContainerNotFound,
   Header,
@@ -87,6 +88,9 @@ function CompanyPage() {
             </>
           )}
         </ContainerNotFound>
+        <Button variant="secondary" onClick={history.goBack}>
+          Go back
+        </Button>
       </Container>
       {(getCompanyStatus === 'loading' || getQuoteStatus === 'loading') && (
         <Loading />

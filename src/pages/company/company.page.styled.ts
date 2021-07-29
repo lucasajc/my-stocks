@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Button as ButtonUI } from 'components/button/button.component'
 
 export const Container = styled.div`
   padding: 16px;
@@ -20,6 +21,13 @@ export const CardContainer = styled.div`
 `
 
 export const ContainerNotFound = styled.div`
-  margin-top: 36px;
+  margin: 36px 0;
   max-width: 440px;
+`
+
+export const Button = styled(ButtonUI)`
+  width: 100%;
+  @media only screen and (min-width: 480px) {
+    width: auto;
+  }
 `
