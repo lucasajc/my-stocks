@@ -25,7 +25,7 @@ describe('Service class', () => {
     })
 
     expect(global.fetch).toHaveBeenCalledWith(
-      'https://some-api-url.com/some/endpoint/v1/company?token=some-api-token&search=some-company-name&page=5',
+      'https://some-api-url.com/some/endpoint/v1/company?search=some-company-name&page=5&token=some-api-token',
       { method: 'GET' }
     )
     expect(response.status).toBe(200)
