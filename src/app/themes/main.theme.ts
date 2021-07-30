@@ -10,7 +10,12 @@ export const main = {
     backgroundColor: '#e6f0ea',
   },
   card: {
-    backgroundColor: '#ffffff',
+    default: {
+      backgroundColor: '#ffffff',
+    },
+    hover: {
+      backgroundColor: '#f7f4f5',
+    },
   },
   text: {
     font: 'Helvetica, sans-serif',
