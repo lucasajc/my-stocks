@@ -6,9 +6,10 @@ import { useFavorites, useRequest } from 'common/hooks'
 import { Text } from 'components/text/text.component'
 import { Loading } from 'components/loading/loading.component'
 import { SearchBoxSymbol } from 'components/search-box-symbol/search-box-symbol.component'
+import { Breadcrumb } from 'components/breadcrumb/breadcrumb.component'
 import { ButtonFavorite } from 'components/button-favorite/button-favorite.component'
 import {
-  ActionsContainer,
+  Footer,
   Button,
   Container,
   ContainerNotFound,
@@ -68,6 +69,13 @@ function CompanyPage() {
   return (
     <>
       <Container>
+        <Breadcrumb
+          path={[
+            { name: 'Home', url: '/' },
+            { name: 'Company' },
+            { name: symbol.toUpperCase() || 'Company' },
+          ]}
+        />
         <SearchBoxSymbol
           onSearch={onSearch}
           placeholder="Search for a company..."
@@ -87,9 +95,9 @@ function CompanyPage() {
               <Text size="sm" weight="light">
                 {quote.primaryExchange}
               </Text>
-              <ActionsContainer>
+              <Footer>
                 <ButtonFavorite active={isFavorite} onClick={onFavorite} />
-              </ActionsContainer>
+              </Footer>
             </Header>
             <CompanySummary company={company} quote={quote} />
           </>
@@ -114,11 +122,11 @@ function CompanyPage() {
           )}
         </ContainerNotFound>
         {!isLoading && (
-          <ActionsContainer>
-            <Button variant="secondary" onClick={history.goBack}>
-              Go back
+          <Footer>
+            <Button variant="secondary" onClick={() => history.push('/')}>
+              Go to home page
             </Button>
-          </ActionsContainer>
+          </Footer>
         )}
       </Container>
       {isLoading && <Loading />}

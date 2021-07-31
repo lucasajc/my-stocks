@@ -25,7 +25,7 @@ export const ContainerNotFound = styled.div`
   max-width: 440px;
 `
 
-export const ActionsContainer = styled.div`
+export const Footer = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-top: 8px;

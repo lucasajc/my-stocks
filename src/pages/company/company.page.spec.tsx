@@ -89,13 +89,15 @@ describe('Company page', () => {
     )
   })
 
-  it('navigates to previous URL when user clicks on go back button', async () => {
-    history.goBack = jest.fn()
+  it('navigates to home page when user clicks on the go to home page button', async () => {
+    history.push = jest.fn()
     renderCompanyPage()
 
-    userEvent.click(await screen.findByRole('button', { name: 'Go back' }))
+    userEvent.click(
+      await screen.findByRole('button', { name: 'Go to home page' })
+    )
 
-    await waitFor(() => expect(history.goBack).toHaveBeenCalled())
+    await waitFor(() => expect(history.push).toHaveBeenCalledWith('/'))
   })
 
   it('saves a company when user clicks on save button', async () => {
