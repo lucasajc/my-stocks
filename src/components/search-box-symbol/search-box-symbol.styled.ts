@@ -31,6 +31,6 @@ export const AutoCompleteItem = styled.div`
   }
 
   :hover {
-    color: #ff3c64;
+    color: ${(props) => props.theme.link.hover.color};
   }
 `

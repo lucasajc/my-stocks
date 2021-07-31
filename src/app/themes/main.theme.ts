@@ -17,6 +17,14 @@ export const main = {
       backgroundColor: '#f7f4f5',
     },
   },
+  link: {
+    default: {
+      color: '#000000',
+    },
+    hover: {
+      color: colors.primary,
+    },
+  },
   text: {
     font: 'Helvetica, sans-serif',
     sizes: {
