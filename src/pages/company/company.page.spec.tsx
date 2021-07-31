@@ -46,6 +46,8 @@ describe('Company page', () => {
     )
   }
 
+  beforeEach(() => localStorage.clear())
+
   it('shows company information and stock quote', async () => {
     const { getCompanyApiCall, getQuoteApiCall } = setUpMocks(
       {

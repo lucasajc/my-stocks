@@ -4,8 +4,8 @@ import { Company, CompanyService } from 'client-api/company'
 import { Quote, QuoteService } from 'client-api/quote'
 import { useFavorites, useRequest } from 'common/hooks'
 import { Text } from 'components/text/text.component'
-import { SearchBox } from 'components/search-box/search-box.component'
 import { Loading } from 'components/loading/loading.component'
+import { SearchBoxSymbol } from 'components/search-box-symbol/search-box-symbol.component'
 import { ButtonFavorite } from 'components/button-favorite/button-favorite.component'
 import {
   ActionsContainer,
@@ -68,7 +68,10 @@ function CompanyPage() {
   return (
     <>
       <Container>
-        <SearchBox onSearch={onSearch} placeholder="Search for a company..." />
+        <SearchBoxSymbol
+          onSearch={onSearch}
+          placeholder="Search for a company..."
+        />
         {canShowCompanySummary && (
           <>
             <Header>
