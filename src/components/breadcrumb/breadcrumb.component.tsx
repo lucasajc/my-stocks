@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text } from 'components/text/text.component'
-import { Container, BreadcrumbBreaker, Link } from './breadcrumb.styled'
+import { Link } from 'components/link/link.component'
+import { Container, BreadcrumbBreaker } from './breadcrumb.styled'
 
 interface IProps {
   path: { name: string; url?: string }[]
