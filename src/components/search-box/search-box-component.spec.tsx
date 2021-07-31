@@ -11,6 +11,7 @@ describe('Search box component', () => {
       <SearchBox
         placeholder="Search for something..."
         onSearch={onSearchCallback}
+        onChangeSearchText={jest.fn()}
       />,
       { wrapper: TestWrapper }
     )
@@ -31,6 +32,7 @@ describe('Search box component', () => {
       <SearchBox
         placeholder="Search for something..."
         onSearch={onSearchCallback}
+        onChangeSearchText={jest.fn()}
       />,
       { wrapper: TestWrapper }
     )
@@ -46,6 +48,7 @@ describe('Search box component', () => {
       <SearchBox
         placeholder="Search for something..."
         onSearch={onSearchCallback}
+        onChangeSearchText={jest.fn()}
       />,
       { wrapper: TestWrapper }
     )

@@ -5,6 +5,7 @@ import { Button as UIButton } from 'components/button/button.component'
 export const Container = styled.form`
   display: flex;
   flex-wrap: wrap;
+  position: relative;
   @media only screen and (min-width: 360px) {
     flex-wrap: nowrap;
   }
@@ -12,11 +13,6 @@ export const Container = styled.form`
 
 export const Input = styled(UIInput)`
   width: 100%;
-  @media only screen and (min-width: 360px) {
-    max-width: 280px;
-    min-width: 148px;
-    width: 100%;
-  }
 `
 
 export const Button = styled(UIButton)`
