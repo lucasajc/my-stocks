@@ -6,7 +6,6 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
 `
 
@@ -23,7 +22,12 @@ export const BackgroundImage = styled.img`
 `
 
 export const Card = styled(CardUI)`
+  position: absolute;
+  top: 24%;
   max-width: 435px;
   min-width: 0;
   border-radius: 36px;
+  @media only screen and (min-width: 720px) {
+    top: 35%;
+  }
 `
