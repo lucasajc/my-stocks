@@ -13,7 +13,7 @@ export const Container = styled.div`
 export const BackgroundImage = styled.img`
   position: absolute;
   z-index: -1;
-  width: 200%;
+  width: 100%;
   height: 100%;
   object-fit: cover;
   right: 0%;

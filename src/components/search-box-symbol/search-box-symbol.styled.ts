@@ -5,7 +5,7 @@ export const AutoCompleteContainer = styled.div`
   display: flex;
   top: 52px;
   background: #ffffff;
-  max-height: 360px;
+  max-height: 344px;
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 8px 16px -6px rgb(0 0 0 / 12%);

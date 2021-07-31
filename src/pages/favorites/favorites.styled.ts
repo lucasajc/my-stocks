@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Button as ButtonUI } from 'components/button/button.component'
 
 export const Container = styled.div`
-  padding: 16px;
+  padding: 32px 16px;
   max-width: 1056px;
   margin: auto;
 `
