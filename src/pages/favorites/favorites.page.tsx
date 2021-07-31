@@ -1,9 +1,12 @@
 import React, { useCallback } from 'react'
+import { useHistory } from 'react-router-dom'
 import { useFavorites } from 'common/hooks'
-import { Container } from 'pages/favorites/favorites.styled'
+import { Breadcrumb } from 'components/breadcrumb/breadcrumb.component'
+import { Container, Footer, Button } from './favorites.styled'
 import { CardFavorite } from './card-favorite/card-favorite.component'
 
 const FavoritesPage = () => {
+  const history = useHistory()
   const { favoriteCompanies, unfavorite } = useFavorites()
 
   const onRemove = useCallback(
@@ -19,6 +22,9 @@ const FavoritesPage = () => {
 
   return (
     <Container>
+      <Breadcrumb
+        path={[{ name: 'Home', url: '/' }, { name: 'Favorite companies' }]}
+      />
       <h2>Favorite companies</h2>
       {favoriteCompanies.map((company) => (
         <CardFavorite
@@ -28,6 +34,11 @@ const FavoritesPage = () => {
           onRemove={onRemove}
         />
       ))}
+      <Footer>
+        <Button variant="secondary" onClick={() => history.push('/')}>
+          Go to home page
+        </Button>
+      </Footer>
     </Container>
   )
 }

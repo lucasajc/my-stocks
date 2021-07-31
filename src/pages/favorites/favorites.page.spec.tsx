@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { CompanyBuilder } from 'common/builders'
 import { TestWrapper } from 'common/test-wrapper'
@@ -74,5 +74,16 @@ describe('Favorites page component', () => {
     expect(screen.queryByText('some company name')).not.toBeInTheDocument()
     expect(screen.getByText('another-symbol')).toBeInTheDocument()
     expect(screen.getByText('another company name')).toBeInTheDocument()
+  })
+
+  it('navigates to home page when user clicks on the go to home page button', async () => {
+    history.push = jest.fn()
+    renderFavoritesPage()
+
+    userEvent.click(
+      await screen.findByRole('button', { name: 'Go to home page' })
+    )
+
+    await waitFor(() => expect(history.push).toHaveBeenCalledWith('/'))
   })
 })
