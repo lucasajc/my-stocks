@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { SearchBox } from 'components/search-box/search-box.component'
 import StockSymbol from 'client-api/symbol/symbol.model'
 import { Text } from 'components/text/text.component'
@@ -18,7 +18,6 @@ export const SearchBoxSymbol = ({ onSearch, placeholder }: IProps) => {
   const { symbols } = useSymbols()
   const [showDropdown, setShowDropdown] = useState<boolean>()
   const [searchText, setSearchText] = useState<string>('')
-  const dropdownRef = useRef()
 
   const matchedSymbols: StockSymbol[] = useMemo(() => {
     if (searchText && symbols) {
@@ -36,10 +35,8 @@ export const SearchBoxSymbol = ({ onSearch, placeholder }: IProps) => {
   }, [matchedSymbols])
 
   useEffect(() => {
-    const onClickCallback = (event: MouseEvent) => {
-      if (event.target !== dropdownRef.current) {
-        setShowDropdown(false)
-      }
+    const onClickCallback = () => {
+      setShowDropdown(false)
     }
     window.addEventListener('click', onClickCallback)
     return () => window.removeEventListener('click', onClickCallback)
@@ -52,14 +49,14 @@ export const SearchBoxSymbol = ({ onSearch, placeholder }: IProps) => {
       onSearch={onSearch}
     >
       {showDropdown && (
-        <AutoCompleteContainer ref={dropdownRef}>
+        <AutoCompleteContainer>
           <AutoCompleteList>
             {matchedSymbols.map(({ symbol, name }) => (
               <AutoCompleteItem key={symbol} onClick={() => onSearch(symbol)}>
-                <Text weight="bold" size="sm">
-                  {`${symbol}: `}
+                <Text weight="bold" size="md">
+                  {symbol}
                 </Text>
-                <Text weight="light" size="sm">
+                <Text weight="light" size="md">
                   {name}
                 </Text>
               </AutoCompleteItem>

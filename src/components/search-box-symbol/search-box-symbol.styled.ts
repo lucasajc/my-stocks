@@ -5,7 +5,7 @@ export const AutoCompleteContainer = styled.div`
   display: flex;
   top: 52px;
   background: #ffffff;
-  max-height: 240px;
+  max-height: 360px;
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 8px 16px -6px rgb(0 0 0 / 12%);
@@ -21,9 +21,9 @@ export const AutoCompleteList = styled.div`
 export const AutoCompleteItem = styled.div`
   cursor: pointer;
   display: grid;
-  grid-template-columns: 36px 1fr;
-  grid-gap: 4px;
-  padding: 8px;
+  grid-template-columns: 48px 1fr;
+  grid-gap: 8px;
+  padding: 12px 8px;
   transition: color 0.1s ease-in;
 
   &:not(:last-child) {
