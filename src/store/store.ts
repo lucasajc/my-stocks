@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import favoriteCompaniesReducer from './slices/favorite.slice'
+import symbolsSlice from './slices/symbols.slice'
 
 const store = configureStore({
   reducer: {
     favoriteCompanies: favoriteCompaniesReducer,
+    symbols: symbolsSlice,
   },
 })
 
