@@ -9,7 +9,6 @@ export const Button = styled.button<ButtonProps>`
   border: 1px solid;
   border-radius: 32px;
   cursor: pointer;
-  font-family: Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 24px;

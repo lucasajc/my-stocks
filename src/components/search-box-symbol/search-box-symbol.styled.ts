@@ -4,7 +4,7 @@ export const AutoCompleteContainer = styled.div`
   position: absolute;
   display: flex;
   top: 52px;
-  background: #ffffff;
+  background: ${(props) => props.theme.card.default.backgroundColor};
   max-height: 344px;
   overflow: hidden;
   border-radius: 8px;
