@@ -23,7 +23,7 @@ export const Input = styled.input<InputProps>`
       ${(props) => props.theme.input[props.variant].default.borderColor};
   }
 
-  @media only screen and (min-width: 360px) {
+  @media only screen and (min-width: 480px) {
     font-size: 14px;
   }
 `

@@ -6,8 +6,10 @@ export const Card = styled.div`
   margin: 8px;
   border-radius: 16px;
   box-shadow: 1px 1px 2px #ddd;
-  min-width: 266px;
   flex: 1;
+  @media only screen and (min-width: 360px) {
+    min-width: 266px;
+  }
 `
 
 export const CardHeader = styled.div`
