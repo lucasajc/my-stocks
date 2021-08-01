@@ -26,7 +26,7 @@ export const main = {
     },
   },
   text: {
-    font: 'Helvetica, sans-serif',
+    font: "'Rubik', sans-serif;",
     sizes: {
       sm: '12px',
       md: '14px',
