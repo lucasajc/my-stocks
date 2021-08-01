@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { ApiCallResponse } from 'client-api/api.service.interfaces'
 
-type RequestStatus = 'loading' | 'success' | 'error' | 'idle'
+export type RequestStatus = 'loading' | 'success' | 'error' | 'idle'
 
 interface IUseRequest<T> {
   data: T

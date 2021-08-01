@@ -1,8 +1,7 @@
 import React, { useEffect, useMemo } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import { Company, CompanyService } from 'client-api/company'
 import { Quote, QuoteService } from 'client-api/quote'
-import { useFavorites, useRequest } from 'common/hooks'
+import { useCompany, useFavorites, useRequest } from 'common/hooks'
 import { Text } from 'components/text/text.component'
 import { Layout } from 'components/layout/layout.component'
 import { Loading } from 'components/loading/loading.component'
@@ -22,11 +21,7 @@ function CompanyPage() {
   const { symbol } = useParams<{ symbol: string }>()
   const history = useHistory()
   const { favoriteCompanies, favorite, unfavorite } = useFavorites()
-  const {
-    data: company,
-    status: getCompanyStatus,
-    call: callGetCompany,
-  } = useRequest<Company>(() => CompanyService.getCompany(symbol))
+  const { company, status: getCompanyStatus } = useCompany(symbol)
   const {
     data: quote,
     status: getQuoteStatus,
@@ -34,7 +29,6 @@ function CompanyPage() {
   } = useRequest<Quote>(() => QuoteService.getQuote(symbol))
 
   useEffect(() => {
-    callGetCompany()
     callGetQuote()
   }, [symbol])
 
