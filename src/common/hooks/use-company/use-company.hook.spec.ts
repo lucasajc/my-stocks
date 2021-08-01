@@ -62,7 +62,7 @@ describe('Use company hook', () => {
   it('gets company data from the store when data exists in the store', async () => {
     store.dispatch(companiesSlice.actions.add(company))
     const { getCompanyServiceCall } = setUpMocks()
-    const { result } = renderHook(() => useCompany('some-company'), {
+    const { result } = renderHook(() => useCompany('SOME-COMPANY'), {
       wrapper: TestWrapper,
     })
 

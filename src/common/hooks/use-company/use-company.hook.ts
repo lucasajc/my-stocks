@@ -37,7 +37,8 @@ const useCompany = (symbol: string): IUseCompany => {
   useEffect(() => {
     if (!symbol || data?.symbol.toUpperCase() === symbol.toUpperCase()) return
     const matchedStoredCompany = companies.find(
-      (storedCompany: Company) => storedCompany.symbol === symbol
+      (storedCompany: Company) =>
+        storedCompany.symbol.toUpperCase() === symbol.toUpperCase()
     )
     if (matchedStoredCompany) {
       setCompany(matchedStoredCompany)
