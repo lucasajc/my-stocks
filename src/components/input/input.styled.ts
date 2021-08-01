@@ -11,7 +11,7 @@ export const Input = styled.input<InputProps>`
   border: 1px solid;
   border-radius: 32px;
   height: 24px;
-  font-size: 14px;
+  font-size: 12px;
   transition: box-shadow 0.2s ease-in;
   font-family: ${(props) => props.theme.text.font};
   background-color: ${(props) =>
@@ -21,5 +21,9 @@ export const Input = styled.input<InputProps>`
   &:focus {
     box-shadow: inset 0 0 0 1px
       ${(props) => props.theme.input[props.variant].default.borderColor};
+  }
+
+  @media only screen and (min-width: 360px) {
+    font-size: 14px;
   }
 `
