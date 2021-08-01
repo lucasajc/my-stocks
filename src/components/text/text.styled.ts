@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export interface TextProps {
   size?: 'sm' | 'md' | 'lg' | 'xlg' | 'xxlg'
   weight?: 'light' | 'normal' | 'bold'
+  className?: string
 }
 
 export const TextStyled = styled.span<TextProps>`

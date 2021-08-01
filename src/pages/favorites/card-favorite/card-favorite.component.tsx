@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text } from 'components/text/text.component'
 import { Button } from 'components/button/button.component'
-import { Card, Link } from './card-favorite.styled'
+import { Card, CompanyTitle, Link } from './card-favorite.styled'
 
 interface IProps {
   symbol: string
@@ -19,9 +19,9 @@ export const CardFavorite = ({ symbol, name, onRemove }: IProps) => {
               {symbol}
             </Text>
           </div>
-          <Text size="lg" weight="light">
+          <CompanyTitle size="lg" weight="light">
             {name}
-          </Text>
+          </CompanyTitle>
         </div>
 
         <Button
