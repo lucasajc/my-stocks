@@ -4,14 +4,13 @@ import { Company, CompanyService } from 'client-api/company'
 import { Quote, QuoteService } from 'client-api/quote'
 import { useFavorites, useRequest } from 'common/hooks'
 import { Text } from 'components/text/text.component'
+import { Layout } from 'components/layout/layout.component'
 import { Loading } from 'components/loading/loading.component'
 import { SearchBoxSymbol } from 'components/search-box-symbol/search-box-symbol.component'
-import { Breadcrumb } from 'components/breadcrumb/breadcrumb.component'
 import { ButtonFavorite } from 'components/button-favorite/button-favorite.component'
 import {
   Footer,
   Button,
-  Container,
   ContainerNotFound,
   Header,
   Title,
@@ -68,70 +67,63 @@ function CompanyPage() {
   const hasError = getCompanyStatus === 'error' || getQuoteStatus === 'error'
 
   return (
-    <>
-      <Container>
-        <Breadcrumb
-          path={[
-            { name: 'Home', url: '/' },
-            { name: 'Company' },
-            { name: symbol.toUpperCase() || 'Company' },
-          ]}
-        />
-        <SearchBoxSymbol
-          onSearch={onSearch}
-          placeholder="Search for a company..."
-        />
-        {canShowCompanySummary && (
-          <>
-            <Header>
-              <Title>
-                <Text size="xxlg" weight="bold">
-                  {company.companyName}
-                </Text>
-                <span> </span>
-                <Text size="xxlg" weight="light">
-                  {`(${company.symbol})`}
-                </Text>
-              </Title>
-              <Text size="sm" weight="light">
-                {quote.primaryExchange}
+    <Layout
+      path={[
+        { name: 'Home', url: '/' },
+        { name: 'Company' },
+        { name: symbol.toUpperCase() || 'Company' },
+      ]}
+    >
+      <SearchBoxSymbol
+        onSearch={onSearch}
+        placeholder="Search for a company..."
+      />
+      {canShowCompanySummary && (
+        <>
+          <Header>
+            <Title>
+              <Text size="xxlg" weight="bold">
+                {company.companyName}
               </Text>
-              <PageActions>
-                <ButtonFavorite active={isFavorite} onClick={onFavorite} />
-              </PageActions>
-            </Header>
-            <CompanySummary company={company} quote={quote} />
+              <span> </span>
+              <Text size="xxlg" weight="light">
+                {`(${company.symbol})`}
+              </Text>
+            </Title>
+            <Text size="sm" weight="light">
+              {quote.primaryExchange}
+            </Text>
+            <PageActions>
+              <ButtonFavorite active={isFavorite} onClick={onFavorite} />
+            </PageActions>
+          </Header>
+          <CompanySummary company={company} quote={quote} />
+        </>
+      )}
+      <ContainerNotFound>
+        {hasError && (
+          <>
+            <Text weight="light" size="xxlg">
+              <span>
+                {'Sorry, we could not find any company with the given symbol '}
+              </span>
+              <strong>{`"${symbol}"`}</strong>
+            </Text>
+            <Text weight="light" size="sm">
+              <p>Try searching for another symbol, such as IBM, AAPL, MSFT.</p>
+            </Text>
           </>
         )}
-        <ContainerNotFound>
-          {hasError && (
-            <>
-              <Text weight="light" size="xxlg">
-                <span>
-                  {
-                    'Sorry, we could not find any company with the given symbol '
-                  }
-                </span>
-                <strong>{`"${symbol}"`}</strong>
-              </Text>
-              <Text weight="light" size="sm">
-                <p>
-                  Try searching for another symbol, such as IBM, AAPL, MSFT.
-                </p>
-              </Text>
-            </>
-          )}
-        </ContainerNotFound>
-        {!isLoading && (
-          <Footer>
-            <Button variant="secondary" onClick={() => history.push('/')}>
-              Go to home page
-            </Button>
-          </Footer>
-        )}
-      </Container>
+      </ContainerNotFound>
+      {!isLoading && (
+        <Footer>
+          <Button variant="secondary" onClick={() => history.push('/')}>
+            Go to home page
+          </Button>
+        </Footer>
+      )}
       {isLoading && <Loading />}
-    </>
+    </Layout>
   )
 }
 
