@@ -15,6 +15,7 @@ import {
   ContainerNotFound,
   Header,
   Title,
+  PageActions,
 } from './company.page.styled'
 import { CompanySummary } from './summary/company-summary.component'
 
@@ -95,9 +96,9 @@ function CompanyPage() {
               <Text size="sm" weight="light">
                 {quote.primaryExchange}
               </Text>
-              <Footer>
+              <PageActions>
                 <ButtonFavorite active={isFavorite} onClick={onFavorite} />
-              </Footer>
+              </PageActions>
             </Header>
             <CompanySummary company={company} quote={quote} />
           </>

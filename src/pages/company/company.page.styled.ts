@@ -25,10 +25,16 @@ export const ContainerNotFound = styled.div`
   max-width: 440px;
 `
 
+export const PageActions = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin: 8px 0;
+`
+
 export const Footer = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin-top: 8px;
+  margin: 8px;
 `
 
 export const Button = styled(ButtonUI)`
