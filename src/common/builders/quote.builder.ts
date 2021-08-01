@@ -92,7 +92,7 @@ class QuoteBuilder extends Quote {
   }
 
   build() {
-    return this
+    return { ...this }
   }
 }
 

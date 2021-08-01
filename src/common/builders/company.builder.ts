@@ -42,7 +42,7 @@ class CompanyBuilder extends Company {
   }
 
   build() {
-    return this
+    return { ...this }
   }
 }
 

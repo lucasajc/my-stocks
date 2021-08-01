@@ -1,7 +1,7 @@
+import { useEffect } from 'react'
 import Company from 'client-api/company/company.model'
 import { RootState, useDispatch, useSelector } from 'store/index'
 import { favoriteCompaniesSlice } from 'store/slices/favorite.slice'
-import { useEffect } from 'react'
 
 interface IUseFavorites {
   favoriteCompanies: Company[]

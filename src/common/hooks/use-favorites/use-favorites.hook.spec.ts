@@ -3,12 +3,10 @@ import { TestWrapper } from 'common/test-wrapper'
 import CompanyBuilder from 'common/builders/company.builder'
 import useFavorites from './use-favorites.hook'
 
-const companyToFavorite = {
-  ...new CompanyBuilder().withSymbol('some-symbol').build(),
-}
-const companyToUnfavorite = {
-  ...new CompanyBuilder().withSymbol('another-symbol').build(),
-}
+const companyToFavorite = new CompanyBuilder().withSymbol('some-symbol').build()
+const companyToUnfavorite = new CompanyBuilder()
+  .withSymbol('another-symbol')
+  .build()
 
 describe('Use favorites hook', () => {
   it('adds a company to the favorite list', async () => {
