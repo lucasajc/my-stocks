@@ -20,9 +20,9 @@ export const SearchBox = ({
 }: PropsWithChildren<IProps>) => {
   const [searchText, setSearchText] = useState<string>('')
   const onSubmit = (e: FormEvent) => {
+    e.preventDefault()
     if (!searchText) return
     onSearch(searchText)
-    e.preventDefault()
   }
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchText(event.target.value)
