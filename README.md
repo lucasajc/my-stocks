@@ -56,6 +56,8 @@ npm install
 npm run start
 ```
 
+**Step 4**: Access http://localhost:4000/
+
 ### Useful scripts
 
 Generate build files:
