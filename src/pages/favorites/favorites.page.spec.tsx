@@ -80,9 +80,7 @@ describe('Favorites page component', () => {
     history.push = jest.fn()
     renderFavoritesPage()
 
-    userEvent.click(
-      await screen.findByRole('button', { name: 'Go to home page' })
-    )
+    userEvent.click(await screen.findByRole('button', { name: 'Home page' }))
 
     await waitFor(() => expect(history.push).toHaveBeenCalledWith('/'))
   })

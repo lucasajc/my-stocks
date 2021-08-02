@@ -112,7 +112,7 @@ function CompanyPage() {
       {!isLoading && (
         <Footer>
           <Button variant="secondary" onClick={() => history.push('/')}>
-            Go to home page
+            Home page
           </Button>
         </Footer>
       )}

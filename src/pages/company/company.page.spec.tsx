@@ -93,9 +93,7 @@ describe('Company page', () => {
     history.push = jest.fn()
     renderCompanyPage()
 
-    userEvent.click(
-      await screen.findByRole('button', { name: 'Go to home page' })
-    )
+    userEvent.click(await screen.findByRole('button', { name: 'Home page' }))
 
     await waitFor(() => expect(history.push).toHaveBeenCalledWith('/'))
   })
