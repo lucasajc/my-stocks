@@ -32,8 +32,8 @@ The project is online here: [my-stocks.netlify.app](https://my-stocks.netlify.ap
 
 Prerequisites:
 ```
-node 14+ (recommended: 14.15)
-npm 7.0+ (recommended: 7.0.2)
+node 14 (recommended: 14.15.0)
+npm 6 (recommended: 6.14.8)
 ```
 
 **Step 1**: Install dependencies:
