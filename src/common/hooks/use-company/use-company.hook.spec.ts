@@ -26,7 +26,7 @@ describe('Use company hook', () => {
 
   it('returns error when get company service call returns an error', async () => {
     jest.spyOn(CompanyService, 'getCompany').mockResolvedValue({
-      status: 404,
+      status: 500,
       error: 'Unknown symbol',
     })
     const { result, waitForNextUpdate } = renderHook(

@@ -166,7 +166,28 @@ describe('Company page', () => {
         'Sorry, we could not find any company with the given symbol'
       )
     )
-    expect(screen.getByText('"IBN"'))
+  })
+
+  it('shows an message when API service call fails due to other issues instead of "not found"', async () => {
+    symbol = 'IBN'
+    setUpMocks(
+      {
+        status: 500,
+        error: 'Failure',
+      },
+      {
+        status: 200,
+        data: new QuoteBuilder().build(),
+      }
+    )
+
+    renderCompanyPage()
+
+    expect(
+      await screen.findByText(
+        'Sorry, we could not find any company with the given symbol. Please try again later.'
+      )
+    )
   })
 
   it('calls service when page is rerendered with another symbol', async () => {
@@ -174,17 +195,21 @@ describe('Company page', () => {
     const getCompanyApiCall = jest
       .spyOn(CompanyService, 'getCompany')
       .mockResolvedValueOnce({
+        status: 200,
         data: new CompanyBuilder().withSymbol('first-symbol').build(),
       })
       .mockResolvedValueOnce({
+        status: 200,
         data: new CompanyBuilder().withSymbol('second-symbol').build(),
       })
     const getQuoteApiCall = jest
       .spyOn(QuoteService, 'getQuote')
       .mockResolvedValueOnce({
+        status: 200,
         data: new QuoteBuilder().withSymbol('first-symbol').build(),
       })
       .mockResolvedValueOnce({
+        status: 200,
         data: new QuoteBuilder().withSymbol('second-symbol').build(),
       })
 

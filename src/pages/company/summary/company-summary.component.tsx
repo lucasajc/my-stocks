@@ -14,7 +14,7 @@ interface IProps {
 
 export const CompanySummary = ({ company, quote }: IProps) => {
   return (
-    <>
+    <section>
       <CardContainer>
         <CardLatestPrice
           change={quote.change}
@@ -51,6 +51,6 @@ export const CompanySummary = ({ company, quote }: IProps) => {
         city={company.city}
         country={company.country}
       />
-    </>
+    </section>
   )
 }

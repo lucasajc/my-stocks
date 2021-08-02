@@ -28,13 +28,34 @@ describe('Use request hook', () => {
     expect(result.current.status).toEqual('success')
   })
 
-  it('returns status error when a unsuccessful request has been made', async () => {
+  it('returns status not-found when a unsuccessful request has been made with status 404', async () => {
     const { result, waitForNextUpdate } = renderHook(
       () =>
         useRequest(() =>
           Promise.resolve({
             status: 404,
             error: 'Unknown symbol',
+          })
+        ),
+      {
+        wrapper: TestWrapper,
+      }
+    )
+
+    act(() => result.current.call())
+    await waitForNextUpdate()
+
+    expect(result.current.data).toBeFalsy()
+    expect(result.current.status).toEqual('not-found')
+  })
+
+  it('returns status error when a unsuccessful request has been made', async () => {
+    const { result, waitForNextUpdate } = renderHook(
+      () =>
+        useRequest(() =>
+          Promise.resolve({
+            status: 500,
+            error: 'Failure',
           })
         ),
       {
