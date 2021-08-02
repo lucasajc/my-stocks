@@ -48,6 +48,11 @@
     "react/require-default-props": "off",
     "no-confusing-arrow": "off",
     "function-paren-newline": "off",
-    "operator-linebreak": "off"
+    "operator-linebreak": "off",
+    "jsx-a11y/label-has-associated-control": [ "error", {
+      "required": {
+        "some": [ "nesting", "id"  ]
+      }
+    }]
   }
 }

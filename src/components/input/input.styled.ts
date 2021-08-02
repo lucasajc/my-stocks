@@ -14,6 +14,7 @@ export const Input = styled.input<InputProps>`
   font-size: 12px;
   transition: box-shadow 0.2s ease-in;
   font-family: ${(props) => props.theme.text.font};
+  color: ${(props) => props.theme.input[props.variant].default.textColor};
   background-color: ${(props) =>
     props.theme.input[props.variant].default.backgroundColor};
   border-color: ${(props) =>

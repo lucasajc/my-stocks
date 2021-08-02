@@ -9,25 +9,26 @@ const colors = {
   greenLight: '#e6f0ea',
   red: '#eb0f29',
   grayLight: '#f7f4f5',
-  gray: '#cccccc',
+  gray: '#C9D1D9',
+  dark: '#0D1117',
 }
 
-export const main: ITheme = {
+export const dark: ITheme = {
   colors: { ...colors },
   body: {
-    backgroundColor: colors.greenLight,
+    backgroundColor: colors.dark,
   },
   card: {
     default: {
-      backgroundColor: colors.white,
+      backgroundColor: '#161A23',
     },
     hover: {
-      backgroundColor: colors.grayLight,
+      backgroundColor: colors.black,
     },
   },
   link: {
     default: {
-      color: colors.black,
+      color: colors.white,
     },
     hover: {
       color: colors.primary,
@@ -49,26 +50,26 @@ export const main: ITheme = {
     },
     colors: {
       labels: {
-        default: colors.black,
+        default: colors.gray,
       },
       numbers: {
         positive: colors.green,
         negative: colors.red,
-        zero: colors.black,
+        zero: colors.gray,
       },
     },
   },
   input: {
     primary: {
       default: {
-        textColor: colors.black,
+        textColor: colors.gray,
         backgroundColor: 'transparent',
         borderColor: colors.primary,
       },
     },
     secondary: {
       default: {
-        textColor: colors.black,
+        textColor: colors.gray,
         backgroundColor: colors.secondary,
         borderColor: colors.secondary,
       },
@@ -83,29 +84,29 @@ export const main: ITheme = {
       },
       hover: {
         backgroundColor: colors.black,
-        textColor: colors.white,
+        textColor: colors.gray,
         borderColor: colors.black,
       },
       disabled: {
         backgroundColor: colors.gray,
-        textColor: colors.white,
+        textColor: colors.gray,
         borderColor: colors.gray,
       },
     },
     secondary: {
       default: {
         backgroundColor: 'transparent',
-        textColor: colors.black,
+        textColor: colors.gray,
         borderColor: colors.primary,
       },
       hover: {
         backgroundColor: colors.black,
-        textColor: colors.white,
-        borderColor: colors.black,
+        textColor: colors.gray,
+        borderColor: colors.gray,
       },
       disabled: {
         backgroundColor: colors.gray,
-        textColor: colors.white,
+        textColor: colors.gray,
         borderColor: colors.gray,
       },
     },

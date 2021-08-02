@@ -6,7 +6,12 @@ export const Container = styled.header`
   align-items: center;
   justify-content: center;
   grid-gap: 16px;
+  flex-wrap: wrap;
+  color: ${(props) => props.theme.text.colors.labels.default};
   background: ${(props) => props.theme.card.default.backgroundColor};
+  @media only screen and (min-width: 480px) {
+    flex-wrap: nowrap;
+  }
 `
 
 export const Body = styled.div`
@@ -21,11 +26,16 @@ export const Links = styled.nav`
   display: flex;
   grid-gap: 16px;
   justify-content: space-between;
-  @media only screen and (min-width: 480px) {
-    margin-right: 120px;
-  }
 `
 
 export const AppLogo = styled.img`
   height: 36px;
+`
+
+export const ThemeCheckbox = styled.label`
+  cursor: pointer;
+  display: flex;
+  grid-gap: 4px;
+  align-items: center;
+  justify-content: center;
 `

@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { Button as ButtonUI } from 'components/button/button.component'
 
 export const Header = styled.div`
+  color: ${(props) => props.theme.text.colors.labels.default};
   padding: 32px 8px 12px;
 `
 

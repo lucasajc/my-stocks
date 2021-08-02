@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.nav`
+  color: ${(props) => props.theme.text.colors.labels.default};
   margin-bottom: 20px;
 `
 
